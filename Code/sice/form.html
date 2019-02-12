@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Send HTML Form as JSON</title>
+      <link rel="stylesheet" type="text/css" href="/sice/form.css">
+      <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+      <!--<script type="text/javascript" src="/sice/form.js"></script>-->
+  </head>
+
+  <body>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.min.js"></script>
+    <script src="/sice/OrbitControls.js"></script>
+    <script src="/sice/OBJLoader.js"></script>
+    <script src="/sice/MTLLoader.js"></script>
+      <div id="form">
+        <form id="myform" type="post">
+          <fieldset>
+            <legend>3D File Labeler</legend>
+            <div class="elements">
+              <label for="name">Name: </label>
+              <input  required="required" type="text" name="fname"  size="20"  />
+            </div>
+             <div class="elements">
+                <label for="file">Upload File: </label>
+                <input type="file" id="file" name="file" multiple="multiple" accept=".obj">
+                <input type="button" id = "sice" value="Upload">
+            </div>  
+           <div class="elements">
+                <label for="hobby">Flat: </label>
+                <input type="checkbox" name="Flat" value="a" id="f1" >a
+                <input type="checkbox" name="Flat" value="b"  id="f2">b
+                <input type="checkbox" name="Flat" value="c"  id="f3">c 
+           </div>     
+            <div class="elements">
+                <label for="hobby">Solid: </label>
+                <input type="checkbox" name="Solid" value="a" id="s1" >a
+                <input type="checkbox" name="Solid" value="b"  id="s2">b
+                <input type="checkbox" name="Solid" value="c"  id="s3">c 
+           </div>   
+
+           <div class="elements">
+               <label for="date">Date: </label>
+               <input type="date" name="date" id="date">
+           </div>
+           
+            <div class="submit">
+               <input type="submit" id="btn" name="btn" class="btn" value="Submit" />
+          </fieldset>
+        </form>
+      </div>
+
+        <button type="button" id="right"><img src="right.png" height="10"/></button>
+        <p id="objName"></p>
+        <button type="button" id="left"><img src="left.png" height="10"/></button>
+
+    <script src="/sice/3d.js"></script>
+  </body>
+</html>

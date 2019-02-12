@@ -1,0 +1,24 @@
+{
+  "name": "jaden-project",
+  "version": "1.0.0",
+  "description": "First Project.",
+  "main": "scripts.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JLee1210/3D_file_annotator.git"
+  },
+  "author": "Jaden Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JLee1210/3D_file_annotator/issues"
+  },
+  "homepage": "https://github.com/JLee1210/3D_file_annotator#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "path": "^0.12.7",
+    "three": "^0.101.1"
+  }
+}
