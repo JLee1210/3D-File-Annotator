@@ -137,6 +137,8 @@ document.getElementById('sice').onclick = function(){
 	r = 1;
 	c = 0;
 	var file_data = $('input[name="file"]')[0].files;
+	name = file_data[0].name;
+
 	fileUpload(file_data[0].name);
 	nameUpdate(file_data[0].name);
 	/*var objLoader = new THREE.OBJLoader();
@@ -214,6 +216,7 @@ $(document).ready(function() {
 		    a.download = fileName;
 		    a.click();
 		}
-		download(output, 'data.json', 'application/json');
+		download(output, 'data-' + name + '.json', 'application/json');
+		$('input:checkbox').removeAttr('checked');
 	});
 });

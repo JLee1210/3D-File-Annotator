@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JLee1210/3D_file_annotator.git"
+    "url": "git+https://github.com/JLee1210/3D-File-Annotator.git"
   },
   "author": "Jaden Lee",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JLee1210/3D_file_annotator/issues"
+    "url": "https://github.com/JLee1210/3D-File-Annotator/issues"
   },
-  "homepage": "https://github.com/JLee1210/3D_file_annotator#readme",
+  "homepage": "https://github.com/JLee1210/3D-File-Annotator#readme",
   "dependencies": {
     "express": "^4.16.4",
     "path": "^0.12.7",
