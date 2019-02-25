@@ -238,7 +238,8 @@ window.onload = function() {
 	    			break;
 	    		}
 	    	}
-	  	jreader.readAsText(jsonFile, encoding);
+	  	if (sice == true)
+	  		jreader.readAsText(jsonFile, encoding);
 
 	    reader.onload = function(e) {
 	   	var data = JSON.parse(json);
