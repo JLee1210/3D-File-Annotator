@@ -242,12 +242,14 @@ window.onload = function() {
 	  		jreader.readAsText(jsonFile, encoding);
 
 	    reader.onload = function(e) {
-	   	var data = JSON.parse(json);
-	    document.getElementById("user").innerHTML = data.user;
-	    document.getElementById(data.label).checked = true;
-	    $(':checkbox').not( document.getElementById(data.label) ).attr('checked', false);
-	    document.getElementById("date").value = data.date;
-	    document.getElementById("comment").value = data.comment;
+	    if (sice == true) {
+		   	var data = JSON.parse(json);
+		    document.getElementById("user").innerHTML = data.user;
+		    document.getElementById(data.label).checked = true;
+		    $(':checkbox').not( document.getElementById(data.label) ).attr('checked', false);
+		    document.getElementById("date").value = data.date;
+		    document.getElementById("comment").value = data.comment;
+		}
 	    
 	    var result = reader.result;
 		lighting(keyLight, fillLight, backLight);
