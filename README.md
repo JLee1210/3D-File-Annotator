@@ -1,5 +1,11 @@
-# 3D-File-Annotator
-1. install express via node js by typing "npm install express" into terminal
-2. In root-directory, type "node index.js" to start server
-3. Go to http://localhost:8080/sice/form.html
-4. Make sure you have obj files in the "/objs/" folder.
+# 3D_File_Labeler
+This is an application that takes in a folder of obj files, displays the 3D object onto the screen, then exports the label data as json file.
+
+## Install express 
+```bash
+$ npm install express
+```
+## Go to localhost:8080/sice/form.html
+http://localhost:8080/sice/form.html
+
+### Make sure you select a folder with ONLY .json files
