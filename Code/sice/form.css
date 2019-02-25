@@ -1,15 +1,19 @@
+html {
+  zoom: 95%;
+}
 body { 
-  margin: 0; 
+  margin:0 auto;
   float: right;
 }
 
 #objName{
   text-align: center;
   display: inline-block;
-  margin: auto;
+  margin: 0 auto;
   font: "Times New Roman";
-  font-size: 20px;
+  font-size: 25px;
 }
+
 
 #left {
   width: 50px;
@@ -19,7 +23,7 @@ body {
 }
 #right {
   width: 50px;
-  float: right;
+  float: left;
   display: inline-block;
 
 }
@@ -30,19 +34,22 @@ body {
 #myform {
     margin:0;
     width:460px;
-    padding:25px;
+    padding:20px;
     float: left;
     position:relative;
+    padding-top: 5px;
+    overflow:scroll; 
+    height:735px;
 }
 
 label {
-    width: 10em;
+    width: 20em;
     float: left;
     margin-right: 0.5em;
     display: block;
     vertical-align: middle;
 }
-.submit {
+#btn {
     float:right;
 }
 
@@ -61,12 +68,22 @@ legend {
 .elements {
     padding:10px;
 }
-p {
-    border-bottom:1px solid #B7DDF2;
+
+.labels {
+  border: 2px solid #ccc; 
+  width: 200px; 
+  height: 100px; 
+  overflow-y: scroll;
+}
+
+.fileName {
+    border-bottom:1px; 
+    solid #B7DDF2;
     color:#666666;
     font-size:12px;
     margin-bottom:20px;
     padding-bottom:10px;
+    display: inline-block;
 }
 span {
     color:#666666;
