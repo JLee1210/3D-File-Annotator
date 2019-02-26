@@ -12,8 +12,9 @@
     <script src="/sice/OrbitControls.js"></script>
     <script src="/sice/OBJLoader.js"></script>
     <script src="/sice/MTLLoader.js"></script>
+    <script src="/sice/require.js"></script>
       <div id="form">
-        <form id="myform" type="post">
+        <form id="myform">
           <fieldset>
             <legend>3D File Labeler</legend>
             <div class="elements">
@@ -24,7 +25,7 @@
               <label for="jFile">Upload json Folder: </label>
               <input type="file" id="jFile" name="jFile" multiple webkitdirectory accept=".json">
               <label for="file">Upload obj Folder: </label>
-              <input type="file" id="file" name="file" multiple webkitdirectory accept=".obj">
+              <input type="file" required="required" id="file" name="file" multiple webkitdirectory accept=".obj">
        
             </div>  
             <div class="elements">
@@ -98,7 +99,7 @@
             <div class="submit">
               <button type="button" id="left"><img src="left.png" height="10"/></button>
               <button type="button" id="right"><img src="right.png" height="10"/></button>
-              <input type="submit" id="btn" name="btn" class="btn" value="Submit" />
+              <input type="submit" id="btn" name="submit" class="submit" value="Submit" />
           </fieldset>
         </form>
       </div>

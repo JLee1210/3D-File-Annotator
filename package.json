@@ -17,8 +17,14 @@
   },
   "homepage": "https://github.com/JLee1210/3D-File-Annotator#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "express-php": "0.0.1",
+    "express-session": "^1.15.6",
+    "node-php": "0.0.1",
     "path": "^0.12.7",
-    "three": "^0.101.1"
+    "sphp": "^0.6.3",
+    "three": "^0.101.1",
+    "ws": "^6.1.4"
   }
 }

@@ -65,7 +65,7 @@ document.getElementById('right').onclick = function(){
 			r = 0;
 			l = files.length - 2;
 		}
-		$('input:checkbox').removeAttr('checked');
+
 		document.getElementById('comment').value = "";
 	}
 }
@@ -98,7 +98,6 @@ document.getElementById('left').onclick = function(){
 		nameUpdate(name);
 		c = l2;
 		animate();
-		$('input:checkbox').removeAttr('checked');
 		document.getElementById('comment').value = "";
 	}
 }
@@ -148,6 +147,14 @@ function fileUpload(file){
 		    $(':checkbox').not( document.getElementById(data.label) ).attr('checked', false);
 		    document.getElementById("date").value = data.date;
 		    document.getElementById("comment").value = data.comment;
+			$(':checkbox').not( document.getElementById(data.label) ).attr('disabled', true);
+			$(document.getElementById(data.label)).attr('disabled', false);
+
+		}
+		else {
+			$('input:checkbox').removeAttr('checked');
+			var $inputs = $('.labels input:checkbox');
+			$inputs.prop('disabled',false);
 		}
 		    var result = reader.result;
 			lighting(keyLight, fillLight, backLight);
@@ -155,6 +162,14 @@ function fileUpload(file){
 		    object = objLoader.parse( result );
 		    object.position.y -= 0;
 			object.position.x -= 5;
+			object.traverse( function ( child ) {
+
+	            if ( child instanceof THREE.Mesh ) {
+
+	               child.geometry.center();
+
+	            }
+	    	});
 			scene.add(object);
 			boundingBox.setFromObject( object );
 		    const center = boundingBox.getCenter();
@@ -166,10 +181,12 @@ function fileUpload(file){
 			const minZ = boundingBox.min.z;
 		    const cameraToFarEdge = ( minZ < 0 ) ? -minZ + cameraZ : cameraZ - minZ;
 			camera.position.z = center.z + cameraZ;
+
+			camera.lookAt(center);
 			controls.target = center;
 
 		    // prevent camera from zooming out far enough to create far plane cutoff
-		    controls.maxDistance = cameraToFarEdge * 2;
+		    controls.maxDistance = cameraToFarEdge * 4;
 		    controls.saveState();
   		}
 
@@ -249,16 +266,30 @@ window.onload = function() {
 		    $(':checkbox').not( document.getElementById(data.label) ).attr('checked', false);
 		    document.getElementById("date").value = data.date;
 		    document.getElementById("comment").value = data.comment;
+			$(':checkbox').not( document.getElementById(data.label) ).attr('disabled', true);
 		}
-	    
+	    else {
+			$('input:checkbox').removeAttr('checked');
+			var $inputs = $('.labels input:checkbox');
+			$inputs.prop('disabled',false);
+		}
 	    var result = reader.result;
 		lighting(keyLight, fillLight, backLight);
         // parse using your corresponding loader
         object = objLoader.parse( result );
         object.position.y -= 0;
 		object.position.x -= 5;
+		object.traverse( function ( child ) {
+
+            if ( child instanceof THREE.Mesh ) {
+
+               child.geometry.center();
+
+            }
+	    });
 		scene.add(object);
 		//centers obj object
+		var height = boundingBox.size().y;
 		boundingBox.setFromObject( object );
 	    const center = boundingBox.getCenter();
 	    const size = boundingBox.getSize();
@@ -269,10 +300,15 @@ window.onload = function() {
 		const minZ = boundingBox.min.z;
 	    const cameraToFarEdge = ( minZ < 0 ) ? -minZ + cameraZ : cameraZ - minZ;
 		camera.position.z = center.z + cameraZ;
+		var dist = height / (2 * Math.tan(camera.fov * Math.PI / 360));
+		var pos = scene.position;
+		//camera.position.set(pos.x, pos.y, dist * 1.1); // fudge factor so you can see the boundaries
+		camera.lookAt(center);
 		controls.target = center;
+		
 
 	    // prevent camera from zooming out far enough to create far plane cutoff
-	    controls.maxDistance = cameraToFarEdge * 2;
+	    controls.maxDistance = cameraToFarEdge * 4;
 	    controls.saveState();
       }
 
@@ -339,18 +375,26 @@ $(document).ready(function() {
 		        output[item.name] = item.value;
 		    }
 		});
-
 		e.preventDefault(); 
-		function download(content, fileName, contentType) {
+		var postData = $('#myform').serialize() + "&file=" + files[c].name + "&fname=" + files[c].name.split(".")[0];
+		console.log(postData);
+	    $.ajax({
+            type: "post",
+            url: "json.php",
+            data: postData,
+            success: function() {
+            	console.log("sice");
+            }
+	    });
+		/*function download(content, fileName, contentType) {
 		    var a = document.createElement("a");
 		    var file = new Blob([JSON.stringify(content, null, "\t")], {type: contentType});
+	
 		    a.href = URL.createObjectURL(file);
 		    a.download = fileName;
-		    a.click();
+		    a.click();  
 		}
-		download(output, name.split(".")[0] + '.json', 'application/json');
-		$('input:checkbox').removeAttr('checked');
-		document.getElementById('comment').value = "";
+		download(output, name.split(".")[0] + '.json', 'application/json');*/
 	});
 });
 
