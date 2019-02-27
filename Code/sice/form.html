@@ -12,99 +12,103 @@
     <script src="/sice/OrbitControls.js"></script>
     <script src="/sice/OBJLoader.js"></script>
     <script src="/sice/MTLLoader.js"></script>
-    <script src="/sice/require.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div id="contents" class="frame">
       <div id="form">
-        <form id="myform">
-          <fieldset>
-            <legend>3D File Labeler</legend>
-            <div class="elements">
-              <label for="name">Name: </label>
-              <input  required="required" type="text" name="user"  size="20" id="user" />
-            </div>
-            <div class="elements">
-              <label for="jFile">Upload json Folder: </label>
-              <input type="file" id="jFile" name="jFile" multiple webkitdirectory accept=".json">
-              <label for="file">Upload obj Folder: </label>
-              <input type="file" required="required" id="file" name="file" multiple webkitdirectory accept=".obj">
-       
-            </div>  
-            <div class="elements">
-              <label for="flat">Flat-thin wall components: </label>
-              <div class="labels">
-                <input type="checkbox" name="label" value="flat;backdoors" id="flat;backdoors"/>Backdoors<br/>
-                <input type="checkbox" name="label" value="flat;bracket_like_parts"  id="flat;bracket_like_parts"/>Bracket_like_parts<br/>
-                <input type="checkbox" name="label" value="flat;clips"  id="flat;clips"/>Clips<br/>
-                <input type="checkbox" name="label" value="flat;contact_switches"  id="flat;contact_switches"/>Contact switches<br/>
-                <input type="checkbox" name="label" value="flat;curved_housings"  id="flat;curved_housings"/>Curved housings<br/>
-                <input type="checkbox" name="label" value="flat;miscellaneous"  id="flat;miscellaneous"/>Miscellaneous<br/>
-                <input type="checkbox" name="label" value="flat;rectangular_housings"  id="flat;rectangular_housings"/>Rectangular housings<br/>
-                <input type="checkbox" name="label" value="flat;slender_thin_plates"  id="flat;slender_thin_plates"/>Slender thin plates<br/>
-                <input type="checkbox" name="label" value="flat;thin_plates"  id="flat;thin_plates"/>Thin plates<br/>
-              </div> 
-            </div>     
-            <div class="elements" >
-              <label for="solid">Rectangular-cubic prism: </label>
-              <div class="labels">
-                <input type="checkbox" name="label" value="rectangle;bearing_blocks" id="rectangle;bearing_blocks"/>Bearing blocks<br/>
-                <input type="checkbox" name="label" value="rectangle;contoured_surfaces"  id="rectangle;contoured_surfaces"/>Contoured surfaces<br/>
-                <input type="checkbox" name="label" value="rectangle;handles" id="rectangle;handles"/>Handles<br/>
-                <input type="checkbox" name="label" value="rectangle;L_blocks"  id="rectangle;L_blocks"/>L Blocks<br/>
-                <input type="checkbox" name="label" value="rectangle;long_machine_elements" id="rectangle;long_machine_elements"/>Long machine elements<br/>
-                <input type="checkbox" name="label" value="rectangle;machined_blocks"  id="rectangle;machined_blocks"/>Machined blocks<br/>
-                <input type="checkbox" name="label" value="rectangle;miscellaneous" id="rectangle;miscellaneous"/>Miscellaneous<br/>
-                <input type="checkbox" name="label" value="rectangle;motor_bodies"  id="rectangle;motor_bodies"/>Motor bodies<br/>
-                <input type="checkbox" name="label" value="rectangle;prismatic_stock" id="rectangle;prismatic_stock"/>Prismatic stock<br/>
-                <input type="checkbox" name="label" value="rectangle;rocker_arms"  id="rectangle;rocker_arms"/>Rocker arms<br/>
-                <input type="checkbox" name="label" value="rectangle;slender_links" id="rectangle;slender_links"/>Slender links<br/>
-                <input type="checkbox" name="label" value="rectangle;small_machined_blocks"  id="rectangle;small_machined_blocks"/>Small machined blocks<br/>
-                <input type="checkbox" name="label" value="rectangle;T_shaped_parts" id="rectangle;T_shaped_parts"/>T shaped parts<br/>
-                <input type="checkbox" name="label" value="rectangle;think_plates"  id="rectangle;think_plates"/>Think plates<br/>
-                <input type="checkbox" name="label" value="rectangle;thick_slotted_plates" id="rectangle;thick_slotted_plates"/>Thick slotted plates<br/>
-                <input type="checkbox" name="label" value="rectangle;U_shaped_parts"  id="rectangle;U_shaped_parts"/>U shaped parts<br/>
+          <form id="myform">
+            <fieldset>
+              <legend>3D File Labeler</legend>
+              <div class="elements">
+                <label for="name">Name: </label>
+                <input  required="required" type="text" name="user"  size="20" id="user" />
               </div>
-            </div>   
-            <div class="elements" >
-              <label for="solid">Solids of revolution: </label>
-              <div class="labels">
-                <input type="checkbox" name="label" value="solid;90_degree_elbows" id="solid;90_degree_elbows"/>90 degree elbows<br/>
-                <input type="checkbox" name="label" value="solid;bearling_like_parts"  id="solid;bearling_like_parts"/>Bearling like parts<br/>
-                <input type="checkbox" name="label" value="solid;bolt_like_parts"  id="solid;bolt_like_parts"/>Bolt like parts<br/> 
-                <input type="checkbox" name="label" value="solid;container_like_parts" id="solid;container_like_parts"/>Container like parts<br/>
-                <input type="checkbox" name="label" value="solid;cylindrical_parts"  id="solid;cylindrical_parts"/>Cylindrical parts<br/>
-                <input type="checkbox" name="label" value="solid;discs"  id="solid;discs"/>Discs<br/> 
-                <input type="checkbox" name="label" value="solid;flange_like_parts" id="solid;flange_like_parts"/>Flange like parts<br/>
-                <input type="checkbox" name="label" value="solid;gear_like_parts"  id="solid;gear_like_parts"/>Gear like parts<br/>
-                <input type="checkbox" name="label" value="solid;intersecting_pipes"  id="solid;intersecting_pipes"/>Intersecting pipes<br/> 
-                <input type="checkbox" name="label" value="solid;long_pins" id="solid;long_pins"/>Long pins<br/>
-                <input type="checkbox" name="label" value="solid;miscellaneous"  id="solid;miscellaneous"/>Miscellaneous<br/>
-                <input type="checkbox" name="label" value="solid;non-90_degree_elbows"  id="solid;non-90_degree_elbows"/>Non-90 degree elbows<br/>
-                <input type="checkbox" name="label" value="solid;nuts" id="solid;nuts"/>Nuts<br/>
-                <input type="checkbox" name="label" value="solid;oil_pans"  id="solid;oil_pans"/>Oil Pans<br/>
-                <input type="checkbox" name="label" value="solid;posts"  id="solid;posts"/>Posts<br/> 
-                <input type="checkbox" name="label" value="solid;pulley_like_parts" id="solid;pulley_like_parts"/>Pulley like parts<br/>
-                <input type="checkbox" name="label" value="solid;round_change_at_end"  id="solid;round_change_at_end"/>Round change at end<br/>
-                <input type="checkbox" name="label" value="solid;simple_pipes"  id="solid;simple_pipes"/>Simple pipes<br/> 
-                <input type="checkbox" name="label" value="solid;spoked_w" id="solid;spoked_w"/>Spoked wheels<br/>
-              </div>
-            </div>   
+              <div class="fileName" id="objName"></div>
+              <div class="elements">
+                <label for="jFile">Upload json Folder: </label>
+                <input type="file" id="jFile" name="jFile" multiple webkitdirectory accept=".json">
+                <label for="file">Upload obj Folder: </label>
+                <input type="file" required="required" id="file" name="file" multiple webkitdirectory accept=".obj">
+         
+              </div>  
+              <div class="elements">
+                <label for="flat">Flat-thin wall components: </label>
+                <div class="labels">
+                  <input type="checkbox" name="label" value="flat;backdoors" id="flat;backdoors"/>Backdoors<br/>
+                  <input type="checkbox" name="label" value="flat;bracket_like_parts"  id="flat;bracket_like_parts"/>Bracket_like_parts<br/>
+                  <input type="checkbox" name="label" value="flat;clips"  id="flat;clips"/>Clips<br/>
+                  <input type="checkbox" name="label" value="flat;contact_switches"  id="flat;contact_switches"/>Contact switches<br/>
+                  <input type="checkbox" name="label" value="flat;curved_housings"  id="flat;curved_housings"/>Curved housings<br/>
+                  <input type="checkbox" name="label" value="flat;miscellaneous"  id="flat;miscellaneous"/>Miscellaneous<br/>
+                  <input type="checkbox" name="label" value="flat;rectangular_housings"  id="flat;rectangular_housings"/>Rectangular housings<br/>
+                  <input type="checkbox" name="label" value="flat;slender_thin_plates"  id="flat;slender_thin_plates"/>Slender thin plates<br/>
+                  <input type="checkbox" name="label" value="flat;thin_plates"  id="flat;thin_plates"/>Thin plates<br/>
+                </div> 
+              </div>     
+              <div class="elements" >
+                <label for="solid">Rectangular-cubic prism: </label>
+                <div class="labels">
+                  <input type="checkbox" name="label" value="rectangle;bearing_blocks" id="rectangle;bearing_blocks"/>Bearing blocks<br/>
+                  <input type="checkbox" name="label" value="rectangle;contoured_surfaces"  id="rectangle;contoured_surfaces"/>Contoured surfaces<br/>
+                  <input type="checkbox" name="label" value="rectangle;handles" id="rectangle;handles"/>Handles<br/>
+                  <input type="checkbox" name="label" value="rectangle;L_blocks"  id="rectangle;L_blocks"/>L Blocks<br/>
+                  <input type="checkbox" name="label" value="rectangle;long_machine_elements" id="rectangle;long_machine_elements"/>Long machine elements<br/>
+                  <input type="checkbox" name="label" value="rectangle;machined_blocks"  id="rectangle;machined_blocks"/>Machined blocks<br/>
+                  <input type="checkbox" name="label" value="rectangle;miscellaneous" id="rectangle;miscellaneous"/>Miscellaneous<br/>
+                  <input type="checkbox" name="label" value="rectangle;motor_bodies"  id="rectangle;motor_bodies"/>Motor bodies<br/>
+                  <input type="checkbox" name="label" value="rectangle;prismatic_stock" id="rectangle;prismatic_stock"/>Prismatic stock<br/>
+                  <input type="checkbox" name="label" value="rectangle;rocker_arms"  id="rectangle;rocker_arms"/>Rocker arms<br/>
+                  <input type="checkbox" name="label" value="rectangle;slender_links" id="rectangle;slender_links"/>Slender links<br/>
+                  <input type="checkbox" name="label" value="rectangle;small_machined_blocks"  id="rectangle;small_machined_blocks"/>Small machined blocks<br/>
+                  <input type="checkbox" name="label" value="rectangle;T_shaped_parts" id="rectangle;T_shaped_parts"/>T shaped parts<br/>
+                  <input type="checkbox" name="label" value="rectangle;think_plates"  id="rectangle;think_plates"/>Think plates<br/>
+                  <input type="checkbox" name="label" value="rectangle;thick_slotted_plates" id="rectangle;thick_slotted_plates"/>Thick slotted plates<br/>
+                  <input type="checkbox" name="label" value="rectangle;U_shaped_parts"  id="rectangle;U_shaped_parts"/>U shaped parts<br/>
+                </div>
+              </div>   
+              <div class="elements" >
+                <label for="solid">Solids of revolution: </label>
+                <div class="labels">
+                  <input type="checkbox" name="label" value="solid;90_degree_elbows" id="solid;90_degree_elbows"/>90 degree elbows<br/>
+                  <input type="checkbox" name="label" value="solid;bearling_like_parts"  id="solid;bearling_like_parts"/>Bearling like parts<br/>
+                  <input type="checkbox" name="label" value="solid;bolt_like_parts"  id="solid;bolt_like_parts"/>Bolt like parts<br/> 
+                  <input type="checkbox" name="label" value="solid;container_like_parts" id="solid;container_like_parts"/>Container like parts<br/>
+                  <input type="checkbox" name="label" value="solid;cylindrical_parts"  id="solid;cylindrical_parts"/>Cylindrical parts<br/>
+                  <input type="checkbox" name="label" value="solid;discs"  id="solid;discs"/>Discs<br/> 
+                  <input type="checkbox" name="label" value="solid;flange_like_parts" id="solid;flange_like_parts"/>Flange like parts<br/>
+                  <input type="checkbox" name="label" value="solid;gear_like_parts"  id="solid;gear_like_parts"/>Gear like parts<br/>
+                  <input type="checkbox" name="label" value="solid;intersecting_pipes"  id="solid;intersecting_pipes"/>Intersecting pipes<br/> 
+                  <input type="checkbox" name="label" value="solid;long_pins" id="solid;long_pins"/>Long pins<br/>
+                  <input type="checkbox" name="label" value="solid;miscellaneous"  id="solid;miscellaneous"/>Miscellaneous<br/>
+                  <input type="checkbox" name="label" value="solid;non-90_degree_elbows"  id="solid;non-90_degree_elbows"/>Non-90 degree elbows<br/>
+                  <input type="checkbox" name="label" value="solid;nuts" id="solid;nuts"/>Nuts<br/>
+                  <input type="checkbox" name="label" value="solid;oil_pans"  id="solid;oil_pans"/>Oil Pans<br/>
+                  <input type="checkbox" name="label" value="solid;posts"  id="solid;posts"/>Posts<br/> 
+                  <input type="checkbox" name="label" value="solid;pulley_like_parts" id="solid;pulley_like_parts"/>Pulley like parts<br/>
+                  <input type="checkbox" name="label" value="solid;round_change_at_end"  id="solid;round_change_at_end"/>Round change at end<br/>
+                  <input type="checkbox" name="label" value="solid;simple_pipes"  id="solid;simple_pipes"/>Simple pipes<br/> 
+                  <input type="checkbox" name="label" value="solid;spoked_w" id="solid;spoked_w"/>Spoked wheels<br/>
+                </div>
+              </div>   
 
-            <div class="elements">
-             <label for="date">Date: </label>
-             <input type="date" name="date" id="date">
-            </div>
-            <div class="elements">
-              <label for="comment">Comments:</label>
-              <textarea rows="10" cols="40" name="comment" id="comment"></textarea>
-            </div>
-            <div class="submit">
-              <button type="button" id="left"><img src="left.png" height="10"/></button>
-              <button type="button" id="right"><img src="right.png" height="10"/></button>
-              <input type="submit" id="btn" name="submit" class="submit" value="Submit" />
-          </fieldset>
-        </form>
+              <div class="elements">
+               <label for="date">Date: </label>
+               <input type="date" name="date" id="date">
+              </div>
+              <div class="elements">
+                <label for="comment">Comments:</label>
+                <textarea rows="10" cols="40" name="comment" id="comment"></textarea>
+              </div>
+              <div class="submit">
+                <button type="button" id="left"><img src="left.png" height="10"/></button>
+                <button type="button" id="right"><img src="right.png" height="10"/></button>
+                <input type="submit" id="btn" name="submit" class="submit" value="Submit" />
+            </fieldset>
+          </form>
+        </div>
+        <div id="canvasDiv">
+          <canvas id="canvas"></canvas>
+        </div>   
       </div>
-      <div class="fileName" id="objName"></div>
-
     <script src="/sice/3d.js"></script>
   </body>
 </html>

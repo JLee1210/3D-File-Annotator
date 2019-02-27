@@ -1,19 +1,28 @@
 html {
-  zoom: 95%;
+  box-sizing: border-box;
 }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+.frame { 
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
 body { 
   margin:0 auto;
-  float: right;
+  float: left;
 }
 
 #objName{
   text-align: center;
-  display: inline-block;
+  display: block;
   margin: 0 auto;
   font: "Times New Roman";
   font-size: 25px;
+  float: right;
 }
-
 
 #left {
   width: 50px;
@@ -27,20 +36,30 @@ body {
   display: inline-block;
 
 }
+#canvasDiv {
+  float: right;
+  display: inline-block;
+}
 #form {
   float: left;
+  display: inline-block;
+}
+canvas {
+  position: absolute; 
+  display: inline-block;
+  width: 70%;
+  height: 100%;
+  float: right;
 }
 
 #myform {
     margin:0;
-    width:460px;
-    padding:20px;
+    width:100%;
     float: left;
     position:relative;
     padding-top: 5px;
     overflow-y:scroll; 
-    padding-right: 20px;
-    height:730px;
+    height:720px;
 }
 
 label {

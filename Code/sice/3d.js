@@ -2,12 +2,24 @@ var scene = new THREE.Scene();
 scene.background = new THREE.Color(0xF5F5F5);
 var camera = new THREE.PerspectiveCamera( 100, window.innerWidth/window.innerHeight, 0.1, 1000 );
 var object = new THREE.Object3D();
-var renderer = new THREE.WebGLRenderer();
-
-renderer.setSize( 1095, window.innerHeight );
-document.body.appendChild( renderer.domElement );
-
+var renderer = new THREE.WebGLRenderer({canvas: document.querySelector("canvas"), antialias: true});
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
+var keyLight = new THREE.DirectionalLight(new THREE.Color(0xA9A9A9), .5);
+var fillLight = new THREE.DirectionalLight(new THREE.Color(0xA9A9A9), 0.75);
+var backLight = new THREE.DirectionalLight(0xA9A9A9, 1.3);
+var l = -1;
+var r = 1;
+var name = "";
+var c = 0;
+var file;
+const boundingBox = new THREE.Box3();
+var offset = 10 || 1.25
+const canvas = renderer.domElement;
+const width = canvas.clientWidth;
+const height = canvas.clientHeight;
+renderer.setSize(width, height);
+//document.body.appendChild( renderer.domElement );
+
 controls.enableDamping = true;
 controls.camping = true;
 controls.dampingFactor = .7;
@@ -15,27 +27,17 @@ controls.enableZoom = true;
 
 controls.update();
 
-var keyLight = new THREE.DirectionalLight(new THREE.Color(0xA9A9A9), .5);
 keyLight.position.set(0, 200, 0);
  
-var fillLight = new THREE.DirectionalLight(new THREE.Color(0xA9A9A9), 0.75);
 fillLight.position.set(100, 200, 100);
  
-var backLight = new THREE.DirectionalLight(0xA9A9A9, 1.3);
 backLight.position.set(-100, -200, -100).normalize();
  
 scene.add(keyLight);
 scene.add(fillLight);
 scene.add(backLight);
 
-const boundingBox = new THREE.Box3();
-offset = 10 || 1.25
 
-var l = -1;
-var r = 1;
-var name = "";
-var c = 0;
-var file;
 
 //next obj file via right arrow
 document.getElementById('right').onclick = function(){
@@ -52,7 +54,6 @@ document.getElementById('right').onclick = function(){
 		fileUpload(file);
 		nameUpdate(name);
 		animate();
-		console.log(r);
 		if(r < files.length - 1 && l < files.length - 1){
 			r += 1;
 			l += 1;
@@ -78,7 +79,6 @@ document.getElementById('left').onclick = function(){
 		}	
 		lighting(keyLight, fillLight, backLight);
 		var l2 = l;
-		console.log(l2);
 		if(l < 0){
 			l = files.length - 2;
 			l2 = files.length - 1;
@@ -123,7 +123,6 @@ function fileUpload(file){
 	    	for (var i = 0; i < jsons.length; i++) {
 	    		jsonFile = jsons[i].name.split(".")[0];
 	    		objFile = file.name.split(".")[0];
-	    		console.log("json: " + jsonFile + "\nobj : " + objFile);
 	    		if (jsonFile === objFile) { //if json file exists, read the file
 	    			jsonFile = jsons[i];
 	    			jreader.onload = function(e) {
@@ -142,14 +141,13 @@ function fileUpload(file){
     reader.onload = function(e) {
     	if (sice == true) {
 	    	var data = JSON.parse(json);
-		    document.getElementById("user").innerHTML = data.user;
+		    document.getElementById("user").value = data.user;
 		    document.getElementById(data.label).checked = true;
 		    $(':checkbox').not( document.getElementById(data.label) ).attr('checked', false);
 		    document.getElementById("date").value = data.date;
 		    document.getElementById("comment").value = data.comment;
 			$(':checkbox').not( document.getElementById(data.label) ).attr('disabled', true);
 			$(document.getElementById(data.label)).attr('disabled', false);
-
 		}
 		else {
 			$('input:checkbox').removeAttr('checked');
@@ -204,7 +202,6 @@ window.onload = function() {
 	var jsonInput = document.getElementById('jFile');
 	jsonInput.addEventListener('change', function(e) {
 		jsons = $('input[name="jFile"]')[0].files;
-		console.log(jsons);
 	});
 
 	var fileInput = document.getElementById('file');
@@ -245,7 +242,6 @@ window.onload = function() {
 	    	for (var i = 0; i < jsons.length; i++) {
 	    		jsonFile = jsons[i].name.split(".")[0];
 	    		objFile = file.name.split(".")[0];
-	    		console.log("json: " + jsonFile + "\nobj : " + objFile);
 	    		if (jsonFile === objFile) { //if json file exists, read the file
 	    			jsonFile = jsons[i];
 	    			jreader.onload = function(e) {
@@ -260,18 +256,18 @@ window.onload = function() {
 
 	    reader.onload = function(e) {
 	    if (sice == true) {
-		   	var data = JSON.parse(json);
-		    document.getElementById("user").innerHTML = data.user;
-		    document.getElementById(data.label).checked = true;
-		    $(':checkbox').not( document.getElementById(data.label) ).attr('checked', false);
-		    document.getElementById("date").value = data.date;
-		    document.getElementById("comment").value = data.comment;
-			$(':checkbox').not( document.getElementById(data.label) ).attr('disabled', true);
+			   	var data = JSON.parse(json);
+			    document.getElementById("user").value = data.user;
+			    document.getElementById(data.label).checked = true;
+			    $(':checkbox').not( document.getElementById(data.label) ).attr('checked', false);
+			    document.getElementById("date").value = data.date;
+			    document.getElementById("comment").value = data.comment;
+				$(':checkbox').not( document.getElementById(data.label) ).attr('disabled', true);
 		}
 	    else {
-			$('input:checkbox').removeAttr('checked');
-			var $inputs = $('.labels input:checkbox');
-			$inputs.prop('disabled',false);
+				$('input:checkbox').removeAttr('checked');
+				var $inputs = $('.labels input:checkbox');
+				$inputs.prop('disabled',false);
 		}
 	    var result = reader.result;
 		lighting(keyLight, fillLight, backLight);
@@ -377,7 +373,6 @@ $(document).ready(function() {
 		});
 		e.preventDefault(); 
 		var postData = $('#myform').serialize() + "&file=" + files[c].name + "&fname=" + files[c].name.split(".")[0];
-		console.log(postData);
 	    $.ajax({
             type: "post",
             url: "json.php",
