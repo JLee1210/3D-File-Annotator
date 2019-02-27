@@ -4,13 +4,13 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
-.frame { 
+.frame {
   display: inline-block;
   width: 100%;
   height: 100%;
 }
 
-body { 
+body {
   margin:0 auto;
   float: left;
 }
@@ -45,7 +45,7 @@ body {
   display: inline-block;
 }
 canvas {
-  position: absolute; 
+  position: absolute;
   display: inline-block;
   width: 70%;
   height: 100%;
@@ -58,7 +58,7 @@ canvas {
     float: left;
     position:relative;
     padding-top: 5px;
-    overflow-y:scroll; 
+    overflow-y:scroll;
     height:720px;
 }
 
@@ -86,18 +86,22 @@ legend {
     padding: 2px 6px
 }
 .elements {
+    width: 500px;
     padding:10px;
+}
+#json{
+  width: 300px
 }
 
 .labels {
-  border: 2px solid #ccc; 
-  width: 200px; 
-  height: 100px; 
+  border: 2px solid #ccc;
+  width: 300px;
+  height: 100px;
   overflow-y: scroll;
 }
 
 .fileName {
-    border-bottom:1px; 
+    border-bottom:1px;
     solid #B7DDF2;
     color:#666666;
     font-size:12px;
@@ -109,7 +113,7 @@ span {
     color:#666666;
     font-size:12px;
     margin-bottom:1px;
-    
+
 }
 .btn{
   padding: 4px 12px;
@@ -123,7 +127,7 @@ span {
   cursor: pointer;
   background-color: #f5f5f5;
   border: 1px solid #B7DDF2;
-  
+
 }
 
 .btn:hover{

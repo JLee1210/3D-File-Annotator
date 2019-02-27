@@ -7,7 +7,7 @@
       <!--<script type="text/javascript" src="/sice/form.js"></script>-->
   </head>
 
-  <body>   
+  <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.min.js"></script>
     <script src="/sice/OrbitControls.js"></script>
     <script src="/sice/OBJLoader.js"></script>
@@ -24,12 +24,13 @@
               </div>
               <div class="fileName" id="objName"></div>
               <div class="elements">
-                <label for="jFile">Upload json Folder: </label>
+                <label for="jFile">Saved json Folder </label>
+                <div id='json'> [You need to direct path as Code/sice/json] : </div>
                 <input type="file" id="jFile" name="jFile" multiple webkitdirectory accept=".json">
                 <label for="file">Upload obj Folder: </label>
                 <input type="file" required="required" id="file" name="file" multiple webkitdirectory accept=".obj">
-         
-              </div>  
+
+              </div>
               <div class="elements">
                 <label for="flat">Flat-thin wall components: </label>
                 <div class="labels">
@@ -42,8 +43,8 @@
                   <input type="checkbox" name="label" value="flat;rectangular_housings"  id="flat;rectangular_housings"/>Rectangular housings<br/>
                   <input type="checkbox" name="label" value="flat;slender_thin_plates"  id="flat;slender_thin_plates"/>Slender thin plates<br/>
                   <input type="checkbox" name="label" value="flat;thin_plates"  id="flat;thin_plates"/>Thin plates<br/>
-                </div> 
-              </div>     
+                </div>
+              </div>
               <div class="elements" >
                 <label for="solid">Rectangular-cubic prism: </label>
                 <div class="labels">
@@ -64,31 +65,31 @@
                   <input type="checkbox" name="label" value="rectangle;thick_slotted_plates" id="rectangle;thick_slotted_plates"/>Thick slotted plates<br/>
                   <input type="checkbox" name="label" value="rectangle;U_shaped_parts"  id="rectangle;U_shaped_parts"/>U shaped parts<br/>
                 </div>
-              </div>   
+              </div>
               <div class="elements" >
                 <label for="solid">Solids of revolution: </label>
                 <div class="labels">
                   <input type="checkbox" name="label" value="solid;90_degree_elbows" id="solid;90_degree_elbows"/>90 degree elbows<br/>
                   <input type="checkbox" name="label" value="solid;bearling_like_parts"  id="solid;bearling_like_parts"/>Bearling like parts<br/>
-                  <input type="checkbox" name="label" value="solid;bolt_like_parts"  id="solid;bolt_like_parts"/>Bolt like parts<br/> 
+                  <input type="checkbox" name="label" value="solid;bolt_like_parts"  id="solid;bolt_like_parts"/>Bolt like parts<br/>
                   <input type="checkbox" name="label" value="solid;container_like_parts" id="solid;container_like_parts"/>Container like parts<br/>
                   <input type="checkbox" name="label" value="solid;cylindrical_parts"  id="solid;cylindrical_parts"/>Cylindrical parts<br/>
-                  <input type="checkbox" name="label" value="solid;discs"  id="solid;discs"/>Discs<br/> 
+                  <input type="checkbox" name="label" value="solid;discs"  id="solid;discs"/>Discs<br/>
                   <input type="checkbox" name="label" value="solid;flange_like_parts" id="solid;flange_like_parts"/>Flange like parts<br/>
                   <input type="checkbox" name="label" value="solid;gear_like_parts"  id="solid;gear_like_parts"/>Gear like parts<br/>
-                  <input type="checkbox" name="label" value="solid;intersecting_pipes"  id="solid;intersecting_pipes"/>Intersecting pipes<br/> 
+                  <input type="checkbox" name="label" value="solid;intersecting_pipes"  id="solid;intersecting_pipes"/>Intersecting pipes<br/>
                   <input type="checkbox" name="label" value="solid;long_pins" id="solid;long_pins"/>Long pins<br/>
                   <input type="checkbox" name="label" value="solid;miscellaneous"  id="solid;miscellaneous"/>Miscellaneous<br/>
                   <input type="checkbox" name="label" value="solid;non-90_degree_elbows"  id="solid;non-90_degree_elbows"/>Non-90 degree elbows<br/>
                   <input type="checkbox" name="label" value="solid;nuts" id="solid;nuts"/>Nuts<br/>
                   <input type="checkbox" name="label" value="solid;oil_pans"  id="solid;oil_pans"/>Oil Pans<br/>
-                  <input type="checkbox" name="label" value="solid;posts"  id="solid;posts"/>Posts<br/> 
+                  <input type="checkbox" name="label" value="solid;posts"  id="solid;posts"/>Posts<br/>
                   <input type="checkbox" name="label" value="solid;pulley_like_parts" id="solid;pulley_like_parts"/>Pulley like parts<br/>
                   <input type="checkbox" name="label" value="solid;round_change_at_end"  id="solid;round_change_at_end"/>Round change at end<br/>
-                  <input type="checkbox" name="label" value="solid;simple_pipes"  id="solid;simple_pipes"/>Simple pipes<br/> 
+                  <input type="checkbox" name="label" value="solid;simple_pipes"  id="solid;simple_pipes"/>Simple pipes<br/>
                   <input type="checkbox" name="label" value="solid;spoked_w" id="solid;spoked_w"/>Spoked wheels<br/>
                 </div>
-              </div>   
+              </div>
 
               <div class="elements">
                <label for="date">Date: </label>
@@ -107,7 +108,7 @@
         </div>
         <div id="canvasDiv">
           <canvas id="canvas"></canvas>
-        </div>   
+        </div>
       </div>
     <script src="/sice/3d.js"></script>
   </body>
