@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
   <head>
     <title>Send HTML Form as JSON</title>
@@ -9,9 +9,9 @@
 
   <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.min.js"></script>
-    <script src="/sice/OrbitControls.js"></script>
-    <script src="/sice/OBJLoader.js"></script>
-    <script src="/sice/MTLLoader.js"></script>
+    <script src="/sice/Javascript/OrbitControls.js"></script>
+    <script src="/sice/Javascript/OBJLoader.js"></script>
+    <script src="/sice/Javascript/MTLLoader.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <div id="contents" class="frame">
       <div id="form">
@@ -28,7 +28,7 @@
                 <div id='json'> [You need to direct path as Code/sice/json] : </div>
                 <input type="file" id="jFile" name="jFile" multiple webkitdirectory accept=".json">
                 <label for="file">Upload obj Folder: </label>
-                <input type="file" required="required" id="file" name="file" multiple webkitdirectory accept=".obj">
+                <input type="file" required="required" id="file" name="file" multiple webkitdirectory mozdirectory accept=".obj">
 
               </div>
               <div class="elements">
@@ -110,6 +110,6 @@
           <canvas id="canvas"></canvas>
         </div>
       </div>
-    <script src="/sice/3d.js"></script>
+    <script src="/sice/Javascript/3d.js"></script>
   </body>
 </html>

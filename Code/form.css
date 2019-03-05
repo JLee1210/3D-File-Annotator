@@ -10,18 +10,24 @@ html {
   height: 100%;
 }
 
+#json{
+  font-size: 14px;
+  font-family: Segoe UI;
+  display: block;
+  width: 20em;
+}
+
 body {
   margin:0 auto;
   float: left;
 }
 
 #objName{
-  text-align: center;
-  display: block;
-  margin: 0 auto;
-  font: "Times New Roman";
+  text-align: left;
+  font-family: Times New Roman;
   font-size: 25px;
-  float: right;
+  float: left;
+  width: 100%;
 }
 
 #left {
@@ -68,6 +74,7 @@ label {
     margin-right: 0.5em;
     display: block;
     vertical-align: middle;
+    font-size: 20px;
 }
 #btn {
     float:right;
@@ -86,16 +93,13 @@ legend {
     padding: 2px 6px
 }
 .elements {
-    width: 500px;
+    width: 100%;
     padding:10px;
-}
-#json{
-  width: 300px
 }
 
 .labels {
   border: 2px solid #ccc;
-  width: 300px;
+  width: 100%;
   height: 100px;
   overflow-y: scroll;
 }

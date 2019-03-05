@@ -42,9 +42,8 @@ scene.add(backLight);
 //next obj file via right arrow
 document.getElementById('right').onclick = function(){
 	if (files.length != 0) {
-		while(scene.children.length > 0){ 
-	    	scene.remove(scene.children[0]); 
-		}	
+		if(newUser)
+			document.getElementById("user").value = user;
 		scene.add(keyLight);
 		scene.add(fillLight);
 		scene.add(backLight);
@@ -74,9 +73,8 @@ document.getElementById('right').onclick = function(){
 //previous obj file via left arrow
 document.getElementById('left').onclick = function(){
 	if (files.length != 0) {
-		while(scene.children.length > 0){ 
-			scene.remove(scene.children[0]); 
-		}	
+		if(newUser)
+			document.getElementById("user").value = user;
 		lighting(keyLight, fillLight, backLight);
 		var l2 = l;
 		if(l < 0){
@@ -109,6 +107,10 @@ function nameUpdate(name){
 
 //uploads obj onto canvas
 function fileUpload(file){
+	newUser = true;
+	while(scene.children.length > 0) { 
+		scene.remove(scene.children[0]); 
+	}	
 	var objLoader = new THREE.OBJLoader();
       
     // set your file encoding
@@ -132,8 +134,10 @@ function fileUpload(file){
 	    			break;
 	    		}
 	    	}
-	    if (sice == true)
+	    if (sice == true) {
 	  		jreader.readAsText(jsonFile, encoding);
+	  		newUser = false;
+	    }
 
     // create a file reader
     var reader = new FileReader();
@@ -197,11 +201,16 @@ function fileUpload(file){
 }
 var files = []; //array of files that are .obj
 var jsons = []; //json files
+var user = "";
+var newUser = true;
 
 window.onload = function() {
 	var jsonInput = document.getElementById('jFile');
 	jsonInput.addEventListener('change', function(e) {
-		jsons = $('input[name="jFile"]')[0].files;
+		var jsonFileObject = $('input[name="jFile"]')[0].files;
+		for (var i = 0; i < jsonFileObject.length; i++) {
+			jsons.push(jsonFileObject[i]);
+		}
 	});
 
 	var fileInput = document.getElementById('file');
@@ -251,8 +260,10 @@ window.onload = function() {
 	    			break;
 	    		}
 	    	}
-	  	if (sice == true)
+	  	if (sice == true) {
 	  		jreader.readAsText(jsonFile, encoding);
+	  		newUser = false;
+	  	}
 
 	    reader.onload = function(e) {
 	    if (sice == true) {
@@ -375,10 +386,14 @@ $(document).ready(function() {
 		var postData = $('#myform').serialize() + "&file=" + files[c].name + "&fname=" + files[c].name.split(".")[0];
 	    $.ajax({
             type: "post",
-            url: "json.php",
+            url: "submit.php",
             data: postData,
-            success: function() {
-            	console.log("sice");
+            success: function(data) {
+            	var arr = data.split("\n");
+            	jsons.push(new File(arr, files[c].name.split(".")[0] + ".json", {type: "application/json"}));
+            	alert("Saved in Code/sice/json!");
+            	if(newUser)
+					user = document.getElementById("user").value;
             }
 	    });
 		/*function download(content, fileName, contentType) {
