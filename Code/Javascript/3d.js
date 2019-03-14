@@ -42,8 +42,6 @@ scene.add(backLight);
 //next obj file via right arrow
 document.getElementById('right').onclick = function(){
 	if (files.length != 0) {
-		if(newUser)
-			document.getElementById("user").value = user;
 		scene.add(keyLight);
 		scene.add(fillLight);
 		scene.add(backLight);
@@ -52,6 +50,10 @@ document.getElementById('right').onclick = function(){
 		c = r;
 		fileUpload(file);
 		nameUpdate(name);
+		if(newUser)
+			document.getElementById("user").value = user;
+		else
+			document.getElementById("user").value = "";
 		animate();
 		if(r < files.length - 1 && l < files.length - 1){
 			r += 1;
@@ -73,8 +75,6 @@ document.getElementById('right').onclick = function(){
 //previous obj file via left arrow
 document.getElementById('left').onclick = function(){
 	if (files.length != 0) {
-		if(newUser)
-			document.getElementById("user").value = user;
 		lighting(keyLight, fillLight, backLight);
 		var l2 = l;
 		if(l < 0){
@@ -94,6 +94,10 @@ document.getElementById('left').onclick = function(){
 		file = files[l2];
 		fileUpload(file);
 		nameUpdate(name);
+		if(newUser)
+			document.getElementById("user").value = user;
+		else
+			document.getElementById("user").value = "";
 		c = l2;
 		animate();
 		document.getElementById('comment').value = "";
@@ -391,7 +395,7 @@ $(document).ready(function() {
             success: function(data) {
             	var arr = data.split("\n");
             	jsons.push(new File(arr, files[c].name.split(".")[0] + ".json", {type: "application/json"}));
-            	alert("Saved in Code/sice/json!");
+            	alert("Saved in Code/json!");
             	if(newUser)
 					user = document.getElementById("user").value;
             }
