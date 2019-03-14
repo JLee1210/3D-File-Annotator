@@ -412,7 +412,7 @@ $(document).ready(function() {
 	});
 });
 
-$('.labels input:checkbox').click(function(){
+/*$('.labels input:checkbox').click(function(){
     var $inputs = $('.labels input:checkbox'); 
     if($(this).is(':checked')){  // <-- check if clicked box is currently checked
        $inputs.not(this).prop('disabled',true); // <-- disable all but checked checkbox
