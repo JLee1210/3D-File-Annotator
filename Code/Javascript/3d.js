@@ -41,6 +41,7 @@ scene.add(backLight);
 
 //next obj file via right arrow
 document.getElementById('right').onclick = function(){
+	$('input[type="checkbox"]:checked').prop('checked',false);
 	if (files.length != 0) {
 		scene.add(keyLight);
 		scene.add(fillLight);
@@ -74,6 +75,7 @@ document.getElementById('right').onclick = function(){
 
 //previous obj file via left arrow
 document.getElementById('left').onclick = function(){
+	$('input[type="checkbox"]:checked').prop('checked',false);
 	if (files.length != 0) {
 		lighting(keyLight, fillLight, backLight);
 		var l2 = l;
@@ -150,12 +152,13 @@ function fileUpload(file){
     	if (sice == true) {
 	    	var data = JSON.parse(json);
 		    document.getElementById("user").value = data.user;
-		    document.getElementById(data.label).checked = true;
-		    $(':checkbox').not( document.getElementById(data.label) ).attr('checked', false);
+			for (var check = 0; check < data.label.length; check++)
+				document.getElementById(data.label[check]).checked = true;		    
+			//$(':checkbox').not( document.getElementById(data.label) ).attr('checked', false);
 		    document.getElementById("date").value = data.date;
 		    document.getElementById("comment").value = data.comment;
-			$(':checkbox').not( document.getElementById(data.label) ).attr('disabled', true);
-			$(document.getElementById(data.label)).attr('disabled', false);
+			//$(':checkbox').not( document.getElementById(data.label) ).attr('disabled', true);
+			//$(document.getElementById(data.label)).attr('disabled', false);
 		}
 		else {
 			$('input:checkbox').removeAttr('checked');
@@ -273,11 +276,12 @@ window.onload = function() {
 	    if (sice == true) {
 			   	var data = JSON.parse(json);
 			    document.getElementById("user").value = data.user;
-			    document.getElementById(data.label).checked = true;
-			    $(':checkbox').not( document.getElementById(data.label) ).attr('checked', false);
+			    for (var check = 0; check < data.label.length; check++)
+					document.getElementById(data.label[check]).checked = true;
+			    //$(':checkbox').not( document.getElementById(data.label) ).attr('checked', false);
 			    document.getElementById("date").value = data.date;
 			    document.getElementById("comment").value = data.comment;
-				$(':checkbox').not( document.getElementById(data.label) ).attr('disabled', true);
+				//$(':checkbox').not( document.getElementById(data.label) ).attr('disabled', true);
 		}
 	    else {
 				$('input:checkbox').removeAttr('checked');
@@ -419,4 +423,4 @@ $(document).ready(function() {
     }else{  //<-- if checkbox was unchecked
        $inputs.prop('disabled',false); // <-- enable all checkboxes
     }
-})
+})*/

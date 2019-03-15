@@ -1,7 +1,10 @@
 {
-    "user": "jaden lee",
+    "user": "sicer",
     "file": "20mm_Calibration_Box.obj",
-    "label": "rectangle;contoured_surfaces",
-    "date": "2019-03-14",
-    "comment": "hola"
+    "label": [
+        "flat;bracket_like_parts",
+        "flat;clips"
+    ],
+    "date": "2019-03-15",
+    "comment": "ddd"
 }
