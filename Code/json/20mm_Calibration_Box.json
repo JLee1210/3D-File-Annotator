@@ -1,10 +1,10 @@
 {
-    "user": "sicer",
+    "user": "Hi My name is Sice",
     "file": "20mm_Calibration_Box.obj",
     "label": [
-        "flat;bracket_like_parts",
-        "flat;clips"
+        "flat;clips",
+        "flat;contact_switches"
     ],
-    "date": "2019-03-15",
-    "comment": "ddd"
+    "date": "2019-03-25",
+    "comment": "siceeee"
 }

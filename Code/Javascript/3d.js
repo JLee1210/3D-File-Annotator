@@ -152,8 +152,9 @@ function fileUpload(file){
     	if (sice == true) {
 	    	var data = JSON.parse(json);
 		    document.getElementById("user").value = data.user;
-			for (var check = 0; check < data.label.length; check++)
-				document.getElementById(data.label[check]).checked = true;		    
+		    if (data.label != null)
+				for (var check = 0; check < data.label.length; check++)
+					document.getElementById(data.label[check]).checked = true;		    
 			//$(':checkbox').not( document.getElementById(data.label) ).attr('checked', false);
 		    document.getElementById("date").value = data.date;
 		    document.getElementById("comment").value = data.comment;
@@ -276,8 +277,9 @@ window.onload = function() {
 	    if (sice == true) {
 			   	var data = JSON.parse(json);
 			    document.getElementById("user").value = data.user;
-			    for (var check = 0; check < data.label.length; check++)
-					document.getElementById(data.label[check]).checked = true;
+			    if (data.label != null)
+				    for (var check = 0; check < data.label.length; check++)
+						document.getElementById(data.label[check]).checked = true;
 			    //$(':checkbox').not( document.getElementById(data.label) ).attr('checked', false);
 			    document.getElementById("date").value = data.date;
 			    document.getElementById("comment").value = data.comment;
