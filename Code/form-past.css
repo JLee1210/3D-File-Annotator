@@ -1,60 +1,19 @@
 html {
   box-sizing: border-box;
-  zoom: 70%;
 }
 *, *:before, *:after {
   box-sizing: inherit;
 }
-
 .frame {
   display: inline-block;
   width: 100%;
   height: 100%;
 }
 
-#section4 {
-  margin-left: 80px;
-  font-size: 20px;
-}
-
-#sice{
-  display: block;
-}
-
-#section2 {
-  margin-left: 40px;
-}
-
-#section3 {
-  margin-left: 40px;
-  font-size: 20px;
-}
-
 #json{
   font-size: 14px;
   font-family: Segoe UI;
   display: block;
-  width: 50em;
-}
-
-.submit {
-  margin-left: 12px;
-}
-
-#subclass{
-  font-size: 18px;
-  font-family: Segoe UI;
-  display: block;
-  width: 10em;
-  font-size: 30px;
-}
-
-#subsubclass{
-  font-size: 13px;
-  font-family: Segoe UI;
-  display: block;
-  margin-left: 40px;
-  font-size: 25px;
   width: 20em;
 }
 
@@ -94,7 +53,7 @@ body {
 canvas {
   position: absolute;
   display: inline-block;
-  width: 49%;
+  width: 70%;
   height: 100%;
   float: right;
 }
@@ -106,71 +65,42 @@ canvas {
     position:relative;
     padding-top: 5px;
     overflow-y:scroll;
-    height:1020px;
+    height:720px;
 }
 
 label {
-    width: 8em;
+    width: 20em;
     float: left;
     margin-right: 0.5em;
     display: block;
     vertical-align: middle;
-    font-size: 35px;
-}
-
-label2 {
-    width: 10em;
-    float: left;
-    margin-right: 0.8em;
-    display: block;
-    vertical-align: middle;
-    font-size: 15px;
+    font-size: 20px;
 }
 #btn {
-    float:center;
-    margin-left: 10px;
+    float:right;
 }
 
 fieldset {
     background:#EBF4FB none repeat scroll 0 0;
     border:2px solid #B7DDF2;
-    width: 755px;
+    width: 450px;
 }
 
 legend {
     color: #fff;
     background: #80D3E2;
     border: 1px solid #781351;
-    padding: 2px 6px;
+    padding: 2px 6px
 }
 .elements {
     width: 100%;
     padding:10px;
-    position: relative;
 }
 
-.labels0 {
+.labels {
   border: 2px solid #ccc;
   width: 100%;
-  height: 160px;
-  overflow-y: scroll;
-}
-.labels1 {
-  border: 2px solid #ccc;
-  width: 100%;
-  height: 160px;
-  overflow-y: scroll;
-}
-.labels2 {
-  border: 2px solid #ccc;
-  width: 100%;
-  height: 400px;
-  overflow-y: scroll;
-}
-
-.comments{
-  width: 100%;
-  padding:10px;
+  height: 100px;
   overflow-y: scroll;
 }
 

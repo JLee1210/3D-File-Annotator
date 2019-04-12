@@ -1,6 +1,7 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
   <head>
+    <!-- <script type="text/javascript" src="http://livejs.com/live.js"></script> -->
     <title>Send HTML Form as JSON</title>
       <link rel="stylesheet" type="text/css" href="/form.css">
       <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -19,75 +20,196 @@
             <fieldset>
               <legend>3D File Labeler</legend>
               <div class="elements">
-                <label for="name">Name: </label>
-                <input  required="required" type="text" name="user"  size="20" id="user" />
+                <div>
+                  <label for="name">Name: </label>
+                </div>
+                <div id="sice">
+                  <input  required="required" type="text" name="user"  size="30" id="user" />
+                </div>
               </div>
               <div class="fileName" id="objName"></div>
+
               <div class="elements">
                 <label for="jFile">Saved json Folder </label>
-                <div id='json'> [You need to direct path as Code/sice/json] : </div>
-                <input type="file" id="jFile" name="jFile" multiple webkitdirectory accept=".json">
-                <label for="file">Upload obj Folder: </label>
-                <input type="file" required="required" id="file" name="file" multiple webkitdirectory mozdirectory accept=".obj">
+                  <div id='json'> [You need to direct path as Code/sice/json] : 
+                  <!-- <input type="file" id="jFile" name="jFile" multiple webkitdirectory accept=".json"> -->
+                    <button type="button" id="jFile" name="jFile" onclick="loadLabels()">Load Your Models</button> <br>
+                  </div>
+                </div>
+                <div class="elements">
+                  <label for="file">Upload obj Folder: </label>
+                  <div>
+                    <input type="file" required="required" id="file" name="file" multiple webkitdirectory mozdirectory accept=".obj">
+                  </div>
+              </div>
 
+              <div class="submit">
+                <button type="button" id="left"><img src="left.png" height="10"/></button>
+                <button type="button" id="right"><img src="right.png" height="10"/></button>
+                <input  type="submit" id="btn" name="submit" class="submit" value="Submit" />
               </div>
+
+              <div class="elements" >
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                  <label for="In-Organic">In-Organic</label>
+                  <div id="section2">
+
+                    <div id='subclass'> Container/Housing </div>
+                    <div id="section3">
+                      <input type="checkbox" name="label[]" value="Container;Generic-Container" id="Container;Generic-Container"/>Generic-Container<br/>
+                      <input type="checkbox" name="label[]" value="Container;Liquid-Container" id="Container;Liquid-Container"/>Liquid-Container<br/>
+                      <input type="checkbox" name="label[]" value="Container;Motor-Housing" id="Container;Motor-Housing"/>Motor-Housing<br/>
+                      <input type="checkbox" name="label[]" value="Container;Oil-Pan" id="Container;Oil-Pan"/>Oil-Pan<br/>
+                      <input type="checkbox" name="label[]" value="Container;Prismatic-Housing" id="Container;Prismatic-Housing"/>Prismatic-Housing<br/>
+                    </div>
+                    <div id="section3">
+                      <div id='subclass'> Cosmetic</div>
+                      <input type="checkbox" name="label[]" value="Cosmetic;Building-Object" id="Cosmetic;Building-Object"/>Building-Object<br/>
+                      <input type="checkbox" name="label[]" value="Cosmetic;Contoured-Housing" id="Cosmetic;Contoured-Housing"/>Contoured-Housing<br/>
+                      <input type="checkbox" name="label[]" value="Cosmetic;Contoured-Plate" id="Cosmetic;Contoured-Plate"/>Contoured-Plate<br/>
+                      <input type="checkbox" name="label[]" value="Cosmetic;Furniture" id="Cosmetic;Furniture"/>Furniture<br/>
+                      <input type="checkbox" name="label[]" value="Cosmetic;Handheld-Object" id="Cosmetic;Handheld-Object"/>Handheld-Object<br/>
+                      <input type="checkbox" name="label[]" value="Cosmetic;Vehicle-Object" id="Cosmetic;Vehicle-Object"/>Vehicle-Object<br/>
+                    </div>
+
+                    <div id='subclass'> Cover</div>
+                    <div id = "section3">
+                      <input type="checkbox" name="label[]" value="Cosmetic;Moving-Parts-Cover" id="Cosmetic;Moving-Parts-Cover"/>Moving-Parts-Cover<br/>
+                      <input type="checkbox" name="label[]" value="Container;Panel" id="Container;Panel"/>Panel<br/>
+                    </div>
+
+                    <div id='subclass'> Electronic</div>
+                    <div id="section3">
+                      <input type="checkbox" name="label[]" value="Electronic;Battery" id="Electronic;Battery"/>Battery<br/>
+                      <input type="checkbox" name="label[]" value="Electronic;Circuit-Board" id="Electronic;Circuit-Board"/>Circuit-Board<br/>
+                      <input type="checkbox" name="label[]" value="Electronic;Contact-Switch" id="Electronic;Contact-Switch"/>Contact-Switch<br/>
+                      <input type="checkbox" name="label[]" value="Electronic;Electric-Motor" id="Electronic;Electric-Motor"/>Electric-Motor<br/>
+                    </div>
+
+                    <div id='subclass'> Fastener</div>
+                    <div id="section3">
+                      <input type="checkbox" name="label[]" value="Fastener;Bolt"  id="Fasteners;Bolt"/>Bolt<br/>
+                      <input type="checkbox" name="label[]" value="Fastener;Clip"   id="Fasteners;Clip"/>Clip<br/>
+                      <input type="checkbox" name="label[]" value="Fastener;Nail"   id="Fasteners;Nail"/>Nail<br/>
+                      <input type="checkbox" name="label[]" value="Fastener;Nut"   id="Fasteners;Nut"/>Nut<br/>
+                      <input type="checkbox" name="label[]" value="Fastener;Pin"    id="Fasteners;Pin"/>Pin<br/>
+                      <input type="checkbox" name="label[]" value="Fastener;Retaining-Ring"   id="Fasteners;Retaining-Ring"/>Retaining-Ring<br/>
+                      <input type="checkbox" name="label[]" value="Fastener;Rivet"  id="Fasteners;Rivet"/>Rivet<br/>
+                      <input type="checkbox" name="label[]" value="Fastener;Screw" id="Fasteners;Screw"/>Screw<br/>
+                      <input type="checkbox" name="label[]" value="Fastener;Spacer" id="Fasteners;Spacer"/>Spacer<br/>
+                      <input type="checkbox" name="label[]" value="Fastener;Washer" id="Fasteners;Washer"/>Washer<br/>
+                    </div>
+
+                    <div id='subclass'> Fluid Motion</div>
+                      <div id='subsubclass'> Pipe</div>
+                      <div id="section4">
+                        <input type="checkbox" name="label[]" value="Fluid-Motion;90degree-Pipe-Fitting"     id="Fluid-Motion;Pipes;90degree-Pipe-Fitting"/>90degree-Pipe-Fitting<br/>
+                        <input type="checkbox" name="label[]" value="Fluid-Motion;Exhaust-Manifold"             id="Fluid-Motion;Exhaust-Manifold"/>Exhaust-Manifold<br/>
+                        <input type="checkbox" name="label[]" value="Fluid-Motion;Funnel" id="Fluid-Motion;Funnel"/>Funnel<br/>
+                        <input type="checkbox" name="label[]" value="Fluid-Motion;Hose"   id="Fluid-Motion;Hose"/>Hose<br/>
+                        <input type="checkbox" name="label[]" value="Fluid-Motion;Non-90degree-Pipe-Fitting" id="Fluid-Motion;Pipes;Non-90degree-Pipe-Fitting"/>Non-90degree-Pipe-Fitting<br/>
+                        <input type="checkbox" name="label[]" value="Fluid-Motion;Nozzle" id="Fluid-Motion;Nozzle"/>Nozzle<br/>
+                        <input type="checkbox" name="label[]" value="Fluid-Motion;Straight-Pipe"             id="Fluid-Motion;Straight-Pipe"/>Straight-Pipe<br/>
+                        <input type="checkbox" name="label[]" value="Fluid-Motion;Valve"  id="Fluid-Motion;Valve"/>Valve<br/>
+                      </div>
+
+                    <div id='subclass'> Linear Motion </div>
+                      <div id="section3">
+                        <input type="checkbox" name="label[]" value="Linear-Motion;Gear-Rack"        id="Linear-Motion;Gear-Rack"/>Gear-Rack<br/>
+                        <input type="checkbox" name="label[]" value="Linear-Motion;Linear-Bearing"   id="Linear-Motion;Linear-Bearing"/>Linear-Bearing <br/>
+                        <input type="checkbox" name="label[]" value="Linear-Motion;Linear-Spring"    id="Linear-Motion;Linear-Spring"/>Linear-Spring<br/>
+                        <input type="checkbox" name="label[]" value="Linear-Motion;Pistons-Actuator" id="Linear-Motion;Pistons-Actuator"/>Pistons-Actuator<br/>
+                        <input type="checkbox" name="label[]" value="Linear-Motion;Sliding-Rail"           id="Linear-Motion;Sliding-Rail"/>Sliding-Rail<br/>
+                      </div>
+
+
+                    <div id='subclass'> Miscellaneous </div>
+                    <div id="section3">
+                      <input type="checkbox" name="label[]" value="Miscellaneous;Disc"   id="Miscellaneouss;Disc"/>Disc<br/>
+                      <input type="checkbox" name="label[]" value="Miscellaneous;Round-Change-at-End"   id="Miscellaneouss;Round-Change-at-End"/>Round-Change-at-End<br/>
+                      <input type="checkbox" name="label[]" value="Miscellaneous;T-Shaped-part"   id="Miscellaneouss;Miscellaneous"/>Miscellaneous<br/>
+                      <input type="checkbox" name="label[]" value="Miscellaneous;T-Shaped-part"   id="Miscellaneouss;T-Shaped-part"/>T-Shaped-part<br/>
+                      <input type="checkbox" name="label[]" value="Miscellaneous;U-Shaped-part"   id="Miscellaneouss;U-Shaped-part"/>U-Shaped-part<br/>
+                    </div>
+
+                    <div id='subclass'> Rotational Motion</div>
+                    <div id="section3">
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Axle-Rod"        id="Rotational-Motion;Axle-Rod"/>Axle-Rod<br/>
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Bevel-Gear"       id="Rotational-Motion;Bevel-Gear"/>Bevel-Gear<br/>
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Connecting-Rod"       id="Rotational-Motion;Connecting-Rod"/>Connecting-Rod<br/>
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Disc-Brake"       id="Rotational-Motion;Disc-Brake"/>Disc-Brake<br/>
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Flange-Bearing"   id="Rotational-Motion;Flange-Bearing"/>Flange-Bearing/Bushing<br/>
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Generic-Wheel"    id="Rotational-Motion;Generic-Wheel"/>Generic-Wheel<br/>
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Knob"            id="Rotational-Motion;Knob"/>Knob<br/>
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Lever"            id="Rotational-Motion;Lever"/>Lever<br/>
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Motor"            id="Rotational-Motion;Motor"/>Motor<br/>
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Mounted-Bearing"  id="Rotational-Motion;Mounted-Bearing"/>Mounted-Bearing/Pillow-Block Bearing<br/>
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Pulley"           id="Rotational-Motion;Pulley"/>Pulley<br/>
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Ring-Gear"        id="Rotational-Motion;Ring-Gear"/>Ring-Gear<br/>
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Rocker-Arm"       id="Rotational-Motion;Rocker-Arm"/>Rocker-Arm<br/>
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Screw"            id="Rotational-Motion;Screw"/>Screw<br/>
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Spoked-Wheel"     id="Rotational-Motion;Spoked-Wheel"/>Spoked-Wheel<br/>
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Spur-Gear"        id="Rotational-Motion;Spur-Gear"/>Spur-Gear<br/>
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Standard-Bearing" id="Rotational-Motion;Standard-Bearing"/>Standard-Bearing<br/>
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Torsion-Spring"           id="Rotational-Motion;Torsion-Spring"/>Torsion-Springs<br/>
+                      <input type="checkbox" name="label[]" value="Rotational-Motion;Worm-Screw"       id="Rotational-Motion;Worm-Screw"/>Worm-Screw<br/>
+                    </div>
+
+                    <div id='subsubclass'> Spacer </div>
+                    <div id="section4">
+                      <input type="checkbox" name="label[]" value="Fastener;Spacers" id="Fastener;Spacer"/>Spacer<br/>
+                    </div>
+
+                    <div id='subclass'> Structure</div>
+                    <div id="section3">
+                      <input type="checkbox" name="label[]" value="Structure;Backdoor" id="Structure;Backdoor"/>Backdoor<br/>
+                      <input type="checkbox" name="label[]" value="Structure;Base" id="Structure;Base"/>Base<br/>
+                      <input type="checkbox" name="label[]" value="Structure;Bracket" id="Structure;Bracket"/>Bracket<br/>
+                      <input type="checkbox" name="label[]" value="Structure;Flange" id="Structure;Flange"/>Flange<br/>
+                      <input type="checkbox" name="label[]" value="Structure;Handle" id="Structure;Handle"/>Handle<br/>
+                      <input type="checkbox" name="label[]" value="Structure;L-Block" id="Structure;L-Block"/>L-Block<br/>
+                      <input type="checkbox" name="label[]" value="Structure;Link" id="Structure;Link"/>Link<br/>
+                      <input type="checkbox" name="label[]" value="Structure;Long-Machine-Element" id="Structure;Long-Machine-Element"/>Long-Machine-Block<br/>
+                      <input type="checkbox" name="label[]" value="Structure;Long-Machine-Element" id="Structure;Long-Machine-Element"/>Long-Machine-Element<br/>
+                      <input type="checkbox" name="label[]" value="Structure;Machined-Block" id="Structure;Machined-Block"/>Machined-Block<br/>
+                      <input type="checkbox" name="label[]" value="Structure;Machined-Plate" id="Structure;Machined-Plate"/>Machined-Plate<br/>
+                      <input type="checkbox" name="label[]" value="Structure;Post" id="Structure;Post"/>Post<br/>
+                      <input type="checkbox" name="label[]" value="Structure;Prismatic-Stock" id="Structure;Prismatic-Stock"/>Slender-Block/Prismatic-Stock<br/>
+                      <input type="checkbox" name="label[]" value="Structure;Slender-Plate" id="Structure;Slender-Plate"/>Slender-Plate<br/>
+                      <input type="checkbox" name="label[]" value="Structure;Solid-Block" id="Structure;Solid-Block"/>Solid-Block<br/>
+                      <input type="checkbox" name="label[]" value="Structure;Structural-Beam" id="Structure;Structural-Beam"/>Structural-Beam<br/>
+                      <input type="checkbox" name="label[]" value="Structure;Thin-Plate" id="Structure;Thin-Plate"/>Thin-Plate<br/>
+                    </div>
+                  </div>
+              </div>
+
+
+
               <div class="elements">
-                <label for="flat">Flat-thin wall components: </label>
-                <div class="labels">
-                  <input type="checkbox" name="label[]" value="flat;backdoors" id="flat;backdoors"/>Backdoors<br/>
-                  <input type="checkbox" name="label[]" value="flat;bracket_like_parts"  id="flat;bracket_like_parts"/>Bracket_like_parts<br/>
-                  <input type="checkbox" name="label[]" value="flat;clips"  id="flat;clips"/>Clips<br/>
-                  <input type="checkbox" name="label[]" value="flat;contact_switches"  id="flat;contact_switches"/>Contact switches<br/>
-                  <input type="checkbox" name="label[]" value="flat;curved_housings"  id="flat;curved_housings"/>Curved housings<br/>
-                  <input type="checkbox" name="label[]" value="flat;miscellaneous"  id="flat;miscellaneous"/>Miscellaneous<br/>
-                  <input type="checkbox" name="label[]" value="flat;rectangular_housings"  id="flat;rectangular_housings"/>Rectangular housings<br/>
-                  <input type="checkbox" name="label[]" value="flat;slender_thin_plates"  id="flat;slender_thin_plates"/>Slender thin plates<br/>
-                  <input type="checkbox" name="label[]" value="flat;thin_plates"  id="flat;thin_plates"/>Thin plates<br/>
-                </div>
-              </div>
-              <div class="elements" >
-                <label for="solid">Rectangular-cubic prism: </label>
-                <div class="labels">
-                  <input type="checkbox" name="label[]" value="rectangle;bearing_blocks" id="rectangle;bearing_blocks"/>Bearing blocks<br/>
-                  <input type="checkbox" name="label[]" value="rectangle;contoured_surfaces"  id="rectangle;contoured_surfaces"/>Contoured surfaces<br/>
-                  <input type="checkbox" name="label[]" value="rectangle;handles" id="rectangle;handles"/>Handles<br/>
-                  <input type="checkbox" name="label[]" value="rectangle;L_blocks"  id="rectangle;L_blocks"/>L Blocks<br/>
-                  <input type="checkbox" name="label[]" value="rectangle;long_machine_elements" id="rectangle;long_machine_elements"/>Long machine elements<br/>
-                  <input type="checkbox" name="label[]" value="rectangle;machined_blocks"  id="rectangle;machined_blocks"/>Machined blocks<br/>
-                  <input type="checkbox" name="label[]" value="rectangle;miscellaneous" id="rectangle;miscellaneous"/>Miscellaneous<br/>
-                  <input type="checkbox" name="label[]" value="rectangle;motor_bodies"  id="rectangle;motor_bodies"/>Motor bodies<br/>
-                  <input type="checkbox" name="label[]" value="rectangle;prismatic_stock" id="rectangle;prismatic_stock"/>Prismatic stock<br/>
-                  <input type="checkbox" name="label[]" value="rectangle;rocker_arms"  id="rectangle;rocker_arms"/>Rocker arms<br/>
-                  <input type="checkbox" name="label[]" value="rectangle;slender_links" id="rectangle;slender_links"/>Slender links<br/>
-                  <input type="checkbox" name="label[]" value="rectangle;small_machined_blocks"  id="rectangle;small_machined_blocks"/>Small machined blocks<br/>
-                  <input type="checkbox" name="label[]" value="rectangle;T_shaped_parts" id="rectangle;T_shaped_parts"/>T shaped parts<br/>
-                  <input type="checkbox" name="label[]" value="rectangle;think_plates"  id="rectangle;think_plates"/>Think plates<br/>
-                  <input type="checkbox" name="label[]" value="rectangle;thick_slotted_plates" id="rectangle;thick_slotted_plates"/>Thick slotted plates<br/>
-                  <input type="checkbox" name="label[]" value="rectangle;U_shaped_parts"  id="rectangle;U_shaped_parts"/>U shaped parts<br/>
-                </div>
-              </div>
-              <div class="elements" >
-                <label for="solid">Solids of revolution: </label>
-                <div class="labels">
-                  <input type="checkbox" name="label[]" value="solid;90_degree_elbows" id="solid;90_degree_elbows"/>90 degree elbows<br/>
-                  <input type="checkbox" name="label[]" value="solid;bearling_like_parts"  id="solid;bearling_like_parts"/>Bearling like parts<br/>
-                  <input type="checkbox" name="label[]" value="solid;bolt_like_parts"  id="solid;bolt_like_parts"/>Bolt like parts<br/>
-                  <input type="checkbox" name="label[]" value="solid;container_like_parts" id="solid;container_like_parts"/>Container like parts<br/>
-                  <input type="checkbox" name="label[]" value="solid;cylindrical_parts"  id="solid;cylindrical_parts"/>Cylindrical parts<br/>
-                  <input type="checkbox" name="label[]" value="solid;discs"  id="solid;discs"/>Discs<br/>
-                  <input type="checkbox" name="label[]" value="solid;flange_like_parts" id="solid;flange_like_parts"/>Flange like parts<br/>
-                  <input type="checkbox" name="label[]" value="solid;gear_like_parts"  id="solid;gear_like_parts"/>Gear like parts<br/>
-                  <input type="checkbox" name="label[]" value="solid;intersecting_pipes"  id="solid;intersecting_pipes"/>Intersecting pipes<br/>
-                  <input type="checkbox" name="label[]" value="solid;long_pins" id="solid;long_pins"/>Long pins<br/>
-                  <input type="checkbox" name="label[]" value="solid;miscellaneous"  id="solid;miscellaneous"/>Miscellaneous<br/>
-                  <input type="checkbox" name="label[]" value="solid;non-90_degree_elbows"  id="solid;non-90_degree_elbows"/>Non-90 degree elbows<br/>
-                  <input type="checkbox" name="label[]" value="solid;nuts" id="solid;nuts"/>Nuts<br/>
-                  <input type="checkbox" name="label[]" value="solid;oil_pans"  id="solid;oil_pans"/>Oil Pans<br/>
-                  <input type="checkbox" name="label[]" value="solid;posts"  id="solid;posts"/>Posts<br/>
-                  <input type="checkbox" name="label[]" value="solid;pulley_like_parts" id="solid;pulley_like_parts"/>Pulley like parts<br/>
-                  <input type="checkbox" name="label[]" value="solid;round_change_at_end"  id="solid;round_change_at_end"/>Round change at end<br/>
-                  <input type="checkbox" name="label[]" value="solid;simple_pipes"  id="solid;simple_pipes"/>Simple pipes<br/>
-                  <input type="checkbox" name="label[]" value="solid;spoked_w" id="solid;spoked_w"/>Spoked wheels<br/>
+                <label for="Organic">Organic </label>
+                <div id="section2">
+                  <div id='subclass'> Animals</div>
+                  <div id="section3">
+                    <input type="checkbox" name="label[]" value="Organic;Animals;Appendage" id="Organic;Animals;Appendage"/>Appendage<br/>
+                    <input type="checkbox" name="label[]" value="Organic;Animals;Arm"       id="Organic;Animals;Arm"/>Arm<br/>
+                    <input type="checkbox" name="label[]" value="Organic;Animals;Body"      id="Organic;Animals;Body"/>Body<br/>
+                    <input type="checkbox" name="label[]" value="Organic;Animals;Clothing"  id="Organic;Animals;Clothing"/>Clothing<br/>
+                    <input type="checkbox" name="label[]" value="Organic;Animals;Feet"      id="Organic;Animals;Feet"/>Feet<br/>
+                    <input type="checkbox" name="label[]" value="Organic;Animals;Hand"      id="Organic;Animals;Hand"/>Hand<br/>
+                    <input type="checkbox" name="label[]" value="Organic;Animals;Head"      id="Organic;Animals;Heads"/>Head<br/>
+                    <input type="checkbox" name="label[]" value="Organic;Animals;Leg"       id="Organic;Animals;Leg"/>Leg<br/>
+                    <input type="checkbox" name="label[]" value="Organic;Animals;Plant"     id="Organic;Animals;Plant"/>Plant<br/>
+                    <input type="checkbox" name="label[]" value="Organic;Animals;Torso"     id="Organic;Animals;Torso"/>Torso<br/>
+                    <input type="checkbox" name="label[]" value="Organic;Animals;Whole"     id="Organic;Animals;Whole"/>Whole<br/>
+                    <div id='subclass'> Plant</div>
+                    <div id="section2">
+                     <input type="checkbox" name="label[]" value="Organic;Plant;Plant"     id="Organic;Plant;Plant"/>Plant<br/>
+                   </div>
+                    <div id='subclass'> Miscellaneous</div>
+                    <div id="section2">
+                      <input type="checkbox" name="label[]" value="Organic;Miscellaneous"     id="Organic;Miscellaneous"/>Miscellaneous<br/>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -95,14 +217,11 @@
                <label for="date">Date: </label>
                <input type="date" name="date" id="date">
               </div>
-              <div class="elements">
+
+              <div class="comments">
                 <label for="comment">Comments:</label>
                 <textarea rows="10" cols="40" name="comment" id="comment"></textarea>
               </div>
-              <div class="submit">
-                <button type="button" id="left"><img src="left.png" height="10"/></button>
-                <button type="button" id="right"><img src="right.png" height="10"/></button>
-                <input type="submit" id="btn" name="submit" class="submit" value="Submit" />
             </fieldset>
           </form>
         </div>
