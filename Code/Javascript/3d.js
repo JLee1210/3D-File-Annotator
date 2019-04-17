@@ -28,16 +28,142 @@ controls.enableZoom = true;
 controls.update();
 
 keyLight.position.set(0, 200, 0);
- 
+
 fillLight.position.set(100, 200, 100);
- 
+
 backLight.position.set(-100, -200, -100).normalize();
- 
+
 scene.add(keyLight);
 scene.add(fillLight);
 scene.add(backLight);
 
+document.getElementById('right2').onclick = function(){
+	$('input[type="checkbox"]:checked').prop('checked',false);
+	if (files.length != 0) {
+		scene.add(keyLight);
+		scene.add(fillLight);
+		scene.add(backLight);
+		name = files[r].name;
+		file = files[r];
+		c = r;
+		fileUpload(file);
+		nameUpdate(name);
+		if(newUser)
+			document.getElementById("user").value = user;
+		else
+			document.getElementById("user").value = "";
+		animate();
+		if(r < files.length - 1 && l < files.length - 1){
+			r += 1;
+			l += 1;
+		}
+		else if(r < files.length - 1 && l == files.length - 1){
+			r += 1;
+			l = 0;
+		}
+		else{
+			r = 0;
+			l = files.length - 2;
+		}
 
+		document.getElementById('comment').value = "";
+	}
+}
+document.getElementById('right3').onclick = function(){
+	$('input[type="checkbox"]:checked').prop('checked',false);
+	if (files.length != 0) {
+		scene.add(keyLight);
+		scene.add(fillLight);
+		scene.add(backLight);
+		name = files[r].name;
+		file = files[r];
+		c = r;
+		fileUpload(file);
+		nameUpdate(name);
+		if(newUser)
+			document.getElementById("user").value = user;
+		else
+			document.getElementById("user").value = "";
+		animate();
+		if(r < files.length - 1 && l < files.length - 1){
+			r += 1;
+			l += 1;
+		}
+		else if(r < files.length - 1 && l == files.length - 1){
+			r += 1;
+			l = 0;
+		}
+		else{
+			r = 0;
+			l = files.length - 2;
+		}
+
+		document.getElementById('comment').value = "";
+	}
+}
+document.getElementById('left2').onclick = document.getElementById('left').onclick = function(){
+	$('input[type="checkbox"]:checked').prop('checked',false);
+	if (files.length != 0) {
+		lighting(keyLight, fillLight, backLight);
+		var l2 = l;
+		if(l < 0){
+			l = files.length - 2;
+			l2 = files.length - 1;
+			r = 0;
+		}
+		else if(r == 0){
+			l -= 1;
+			r = files.length - 1;
+		}
+		else{
+			l -= 1;
+			r -= 1;
+		}
+		name = files[l2].name;
+		file = files[l2];
+		fileUpload(file);
+		nameUpdate(name);
+		if(newUser)
+			document.getElementById("user").value = user;
+		else
+			document.getElementById("user").value = "";
+		c = l2;
+		animate();
+		document.getElementById('comment').value = "";
+	}
+}
+
+document.getElementById('left3').onclick = document.getElementById('left').onclick = function(){
+	$('input[type="checkbox"]:checked').prop('checked',false);
+	if (files.length != 0) {
+		lighting(keyLight, fillLight, backLight);
+		var l2 = l;
+		if(l < 0){
+			l = files.length - 2;
+			l2 = files.length - 1;
+			r = 0;
+		}
+		else if(r == 0){
+			l -= 1;
+			r = files.length - 1;
+		}
+		else{
+			l -= 1;
+			r -= 1;
+		}
+		name = files[l2].name;
+		file = files[l2];
+		fileUpload(file);
+		nameUpdate(name);
+		if(newUser)
+			document.getElementById("user").value = user;
+		else
+			document.getElementById("user").value = "";
+		c = l2;
+		animate();
+		document.getElementById('comment').value = "";
+	}
+}
 
 //next obj file via right arrow
 document.getElementById('right').onclick = function(){
@@ -118,19 +244,19 @@ function fileUpload(file){
 		scene.remove(scene.children[0]); 
 	}	
 	var objLoader = new THREE.OBJLoader();
-      
+
     // set your file encoding
     var encoding = 'ISO-8859-1'; 
-	var jreader = new FileReader();
+    var jreader = new FileReader();
     var json = null;
     var jsonFile = "";
     var objFile = "";
     var sice = false;
     if (file != null) {
 	    // set on load handler for reader
-	    	for (var i = 0; i < jsons.length; i++) {
-	    		jsonFile = jsons[i].name.split(".")[0];
-	    		objFile = file.name.split(".")[0];
+	    for (var i = 0; i < jsons.length; i++) {
+	    	jsonFile = jsons[i].name.split(".")[0];
+	    	objFile = file.name.split(".")[0];
 	    		if (jsonFile === objFile) { //if json file exists, read the file
 	    			jsonFile = jsons[i];
 	    			jreader.onload = function(e) {
@@ -140,24 +266,24 @@ function fileUpload(file){
 	    			break;
 	    		}
 	    	}
-	    if (sice == true) {
-	  		jreader.readAsText(jsonFile, encoding);
-	  		newUser = false;
-	    }
+	    	if (sice == true) {
+	    		jreader.readAsText(jsonFile, encoding);
+	    		newUser = false;
+	    	}
 
     // create a file reader
     var reader = new FileReader();
     // set on load handler for reader
     reader.onload = function(e) {
     	if (sice == true) {
-	    	var data = JSON.parse(json);
-		    document.getElementById("user").value = data.user;
-		    if (data.label != null)
-				for (var check = 0; check < data.label.length; check++)
-					document.getElementById(data.label[check]).checked = true;		    
+    		var data = JSON.parse(json);
+    		document.getElementById("user").value = data.user;
+    		if (data.label != null)
+    			for (var check = 0; check < data.label.length; check++)
+    				document.getElementById(data.label[check]).checked = true;		    
 			//$(':checkbox').not( document.getElementById(data.label) ).attr('checked', false);
-		    document.getElementById("date").value = data.date;
-		    document.getElementById("comment").value = data.comment;
+			document.getElementById("date").value = data.date;
+			document.getElementById("comment").value = data.comment;
 			//$(':checkbox').not( document.getElementById(data.label) ).attr('disabled', true);
 			//$(document.getElementById(data.label)).attr('disabled', false);
 		}
@@ -166,39 +292,39 @@ function fileUpload(file){
 			var $inputs = $('.labels input:checkbox');
 			$inputs.prop('disabled',false);
 		}
-		    var result = reader.result;
-			lighting(keyLight, fillLight, backLight);
+		var result = reader.result;
+		lighting(keyLight, fillLight, backLight);
 		    // parse using your corresponding loader
 		    object = objLoader.parse( result );
 		    object.position.y -= 0;
-			object.position.x -= 5;
-			object.traverse( function ( child ) {
+		    object.position.x -= 5;
+		    object.traverse( function ( child ) {
 
-	            if ( child instanceof THREE.Mesh ) {
+		    	if ( child instanceof THREE.Mesh ) {
 
-	               child.geometry.center();
+		    		child.geometry.center();
 
-	            }
-	    	});
-			scene.add(object);
-			boundingBox.setFromObject( object );
+		    	}
+		    });
+		    scene.add(object);
+		    boundingBox.setFromObject( object );
 		    const center = boundingBox.getCenter();
 		    const size = boundingBox.getSize();
-			const maxDim = Math.max( size.x, size.y, size.z );
-			const fov = camera.fov * ( Math.PI / 180 );
+		    const maxDim = Math.max( size.x, size.y, size.z );
+		    const fov = camera.fov * ( Math.PI / 180 );
 		    let cameraZ = Math.abs( maxDim / 4 * Math.tan( fov * 2 ) );
-			cameraZ *= offset;
-			const minZ = boundingBox.min.z;
+		    cameraZ *= offset;
+		    const minZ = boundingBox.min.z;
 		    const cameraToFarEdge = ( minZ < 0 ) ? -minZ + cameraZ : cameraZ - minZ;
-			camera.position.z = center.z + cameraZ;
+		    camera.position.z = center.z + cameraZ;
 
-			camera.lookAt(center);
-			controls.target = center;
+		    camera.lookAt(center);
+		    controls.target = center;
 
 		    // prevent camera from zooming out far enough to create far plane cutoff
 		    controls.maxDistance = cameraToFarEdge * 4;
 		    controls.saveState();
-  		}
+		}
 
 	    // read the file as text using the reader
 	    reader.readAsText(file, encoding);
@@ -223,17 +349,17 @@ window.onload = function() {
 
 	var fileInput = document.getElementById('file');
 	fileInput.addEventListener('change', function(e) {
-	l = -1;
-	r = 1;
-	c = 0;
-	files = [];
+		l = -1;
+		r = 1;
+		c = 0;
+		files = [];
 
 	//reset scene 
 	while(scene.children.length > 0){ 
 		scene.remove(scene.children[0]); 
 	}	
 	var file_data = $('input[name="file"]')[0].files;
-	
+	document.getElementById("counter").innerHTML = "Count: 0/" + file_data.length;
 	//filter out all the non-obj files
 	for (var i = 0; i < file_data.length; i++) {
 		if (file_data[i].name.split(".")[file_data[i].name.split(".").length - 1] == "obj") {
@@ -243,7 +369,7 @@ window.onload = function() {
 	var objLoader = new THREE.OBJLoader();
 	var i = 0;
 	file = files[i];
-      
+
     // set your file encoding
     var encoding = 'ISO-8859-1'; 
 
@@ -256,9 +382,9 @@ window.onload = function() {
     var sice = false;
     if (file != null) {
 	    // set on load handler for reader
-	    	for (var i = 0; i < jsons.length; i++) {
-	    		jsonFile = jsons[i].name.split(".")[0];
-	    		objFile = file.name.split(".")[0];
+	    for (var i = 0; i < jsons.length; i++) {
+	    	jsonFile = jsons[i].name.split(".")[0];
+	    	objFile = file.name.split(".")[0];
 	    		if (jsonFile === objFile) { //if json file exists, read the file
 	    			jsonFile = jsons[i];
 	    			jreader.onload = function(e) {
@@ -268,54 +394,54 @@ window.onload = function() {
 	    			break;
 	    		}
 	    	}
-	  	if (sice == true) {
-	  		jreader.readAsText(jsonFile, encoding);
-	  		newUser = false;
-	  	}
+	    	if (sice == true) {
+	    		jreader.readAsText(jsonFile, encoding);
+	    		newUser = false;
+	    	}
 
-	    reader.onload = function(e) {
-	    if (sice == true) {
-			   	var data = JSON.parse(json);
-			    document.getElementById("user").value = data.user;
-			    if (data.label != null)
-				    for (var check = 0; check < data.label.length; check++)
-						document.getElementById(data.label[check]).checked = true;
+	    	reader.onload = function(e) {
+	    		if (sice == true) {
+	    			var data = JSON.parse(json);
+	    			document.getElementById("user").value = data.user;
+	    			if (data.label != null)
+	    				for (var check = 0; check < data.label.length; check++)
+	    					document.getElementById(data.label[check]).checked = true;
 			    //$(':checkbox').not( document.getElementById(data.label) ).attr('checked', false);
 			    document.getElementById("date").value = data.date;
 			    document.getElementById("comment").value = data.comment;
 				//$(':checkbox').not( document.getElementById(data.label) ).attr('disabled', true);
-		}
-	    else {
+			}
+			else {
 				$('input:checkbox').removeAttr('checked');
 				var $inputs = $('.labels input:checkbox');
 				$inputs.prop('disabled',false);
-		}
-	    var result = reader.result;
-		lighting(keyLight, fillLight, backLight);
+			}
+			var result = reader.result;
+			lighting(keyLight, fillLight, backLight);
         // parse using your corresponding loader
         object = objLoader.parse( result );
         object.position.y -= 0;
-		object.position.x -= 5;
-		object.traverse( function ( child ) {
+        object.position.x -= 5;
+        object.traverse( function ( child ) {
 
-            if ( child instanceof THREE.Mesh ) {
+        	if ( child instanceof THREE.Mesh ) {
 
-               child.geometry.center();
+        		child.geometry.center();
 
-            }
-	    });
-		scene.add(object);
+        	}
+        });
+        scene.add(object);
 		//centers obj object
 		var height = boundingBox.size().y;
 		boundingBox.setFromObject( object );
-	    const center = boundingBox.getCenter();
-	    const size = boundingBox.getSize();
+		const center = boundingBox.getCenter();
+		const size = boundingBox.getSize();
 		const maxDim = Math.max( size.x, size.y, size.z );
 		const fov = camera.fov * ( Math.PI / 180 );
-	    let cameraZ = Math.abs( maxDim / 4 * Math.tan( fov * 2 ) );
+		let cameraZ = Math.abs( maxDim / 4 * Math.tan( fov * 2 ) );
 		cameraZ *= offset;
 		const minZ = boundingBox.min.z;
-	    const cameraToFarEdge = ( minZ < 0 ) ? -minZ + cameraZ : cameraZ - minZ;
+		const cameraToFarEdge = ( minZ < 0 ) ? -minZ + cameraZ : cameraZ - minZ;
 		camera.position.z = center.z + cameraZ;
 		var dist = height / (2 * Math.tan(camera.fov * Math.PI / 360));
 		var pos = scene.position;
@@ -327,7 +453,7 @@ window.onload = function() {
 	    // prevent camera from zooming out far enough to create far plane cutoff
 	    controls.maxDistance = cameraToFarEdge * 4;
 	    controls.saveState();
-      }
+	}
 
       // read the file as text using the reader
       reader.readAsText(file, encoding);
@@ -336,11 +462,11 @@ window.onload = function() {
       nameUpdate(name);
       $('input:checkbox').removeAttr('checked');
       document.getElementById('comment').value = "";
-	}
+  }
 	  else //if file isn't obj, alert user
 	  	alert("File is not '.obj', please try again.");
 
-    });
+	});
 }
 
 var animate = function () {
@@ -367,54 +493,145 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 //gets formatted date for JSON file
 function getFormattedDate(date) {
-    return date.getFullYear()
-        + "-"
-        + ("0" + (date.getMonth() + 1)).slice(-2)
-        + "-"
-        + ("0" + date.getDate()).slice(-2);
+	return date.getFullYear()
+	+ "-"
+	+ ("0" + (date.getMonth() + 1)).slice(-2)
+	+ "-"
+	+ ("0" + date.getDate()).slice(-2);
 }
 
-$(document).ready(function() {
-	$("#btn").click(function(e){
-	    var output = {};
+function validateForm() {
+	var x = document.forms["myform"]["user"].value;
+	var y = document.forms["myform"]["file"].files.length;
+	if (x == "") {
+		alert("Name must be filled out");
+		document.getElementById("user").focus();
+		return false;
+	} else if (y == 0) {
+		alert("Folder must be selected");
+		document.getElementById("file").focus();
+		return false;
+	}
+	return true;
+}
 
-	    //file json
+var countedFiles = [];
+
+$('input:checkbox, textarea').keydown(function (e) {
+	if (e.which == 13) {
+		if (validateForm()) {
+	        //document.getElementById("submit").click();
+	        var output = {};
+
+		    //file json
 		    output["file"] = files[c].name;
 
-		//form json
-		jQuery("#myform").serializeArray().map(function(item) {
-		    if ( output[item.name] ) {
-		        if ( typeof(output[item.name]) === "string" ) {
-		            output[item.name] = [output[item.name]];
-		        }
-		        output[item.name].push(item.value);
-		    } else {
-		        output[item.name] = item.value;
-		    }
-		});
-		e.preventDefault(); 
-		var postData = $('#myform').serialize() + "&file=" + files[c].name + "&fname=" + files[c].name.split(".")[0];
-	    $.ajax({
-            type: "post",
-            url: "submit.php",
-            data: postData,
-            success: function(data) {
-            	var arr = data.split("\n");
-            	jsons.push(new File(arr, files[c].name.split(".")[0] + ".json", {type: "application/json"}));
-            	alert("Saved in Code/json!");
-            	if(newUser)
-					user = document.getElementById("user").value;
-            }
-	    });
-		/*function download(content, fileName, contentType) {
-		    var a = document.createElement("a");
-		    var file = new Blob([JSON.stringify(content, null, "\t")], {type: contentType});
-	
-		    a.href = URL.createObjectURL(file);
-		    a.download = fileName;
-		    a.click();  
-		}
-		download(output, name.split(".")[0] + '.json', 'application/json');*/
+			//form json
+			jQuery("#myform").serializeArray().map(function(item) {
+				if ( output[item.name] ) {
+					if ( typeof(output[item.name]) === "string" ) {
+						output[item.name] = [output[item.name]];
+					}
+					output[item.name].push(item.value);
+				} else {
+					output[item.name] = item.value;
+				}
+			});
+			e.preventDefault(); 
+			var postData = $('#myform').serialize() + "&file=" + files[c].name + "&fname=" + files[c].name.split(".")[0];
+			$.ajax({
+				type: "post",
+				url: "submit.php",
+				data: postData,
+				success: function(data) {
+					var arr = data.split("\n");
+					jsons.push(new File(arr, files[c].name.split(".")[0] + ".json", {type: "application/json"}));
+					alert("Saved in Code/json!");
+					if (!countedFiles.includes(files[c].name)) {
+						countedFiles.push(files[c].name);
+						document.getElementById("counter").innerHTML = "Count: " + 
+						countedFiles.length + "/" + files.length;
+					}	
+
+					if(newUser)
+						user = document.getElementById("user").value;
+					if (countedFiles.length != files.length)
+						document.getElementById("right").click();
+					else
+						alert("That was the last file!")
+				}
+			});
+		} else 
+		event.preventDefault();
+	}
+});
+
+$(document).ready(function() {
+	$("#submit2").click(function(e){
+		document.getElementById("submit").click();
+	});
+});
+
+$(document).ready(function() {
+	$("#submit3").click(function(e){
+		document.getElementById("submit").click();
+	});
+});
+
+$(document).ready(function() {
+	$("#submit").click(function(e){
+		if (validateForm()) {
+			var output = {};
+
+		    //file json
+		    output["file"] = files[c].name;
+
+			//form json
+			jQuery("#myform").serializeArray().map(function(item) {
+				if ( output[item.name] ) {
+					if ( typeof(output[item.name]) === "string" ) {
+						output[item.name] = [output[item.name]];
+					}
+					output[item.name].push(item.value);
+				} else {
+					output[item.name] = item.value;
+				}
+			});
+			e.preventDefault(); 
+			var postData = $('#myform').serialize() + "&file=" + files[c].name + "&fname=" + files[c].name.split(".")[0];
+			$.ajax({
+				type: "post",
+				url: "submit.php",
+				data: postData,
+				success: function(data) {
+					var arr = data.split("\n");
+					jsons.push(new File(arr, files[c].name.split(".")[0] + ".json", {type: "application/json"}));
+					alert("Saved in Code/json!");
+					if (!countedFiles.includes(files[c].name)) {
+						countedFiles.push(files[c].name);
+						document.getElementById("counter").innerHTML = "Count: " + 
+						countedFiles.length + "/" + files.length;
+					}
+					if(newUser)
+						user = document.getElementById("user").value;
+					document.getElementById("right").click();
+					if (countedFiles.length != files.length)
+						document.getElementById("right").click();
+					else
+						alert("That was the last file!")
+				}
+			});
+			/*function download(content, fileName, contentType) {
+			    var a = document.createElement("a");
+			    var file = new Blob([JSON.stringify(content, null, "\t")], {type: contentType});
+		
+			    a.href = URL.createObjectURL(file);
+			    a.download = fileName;
+			    a.click();  
+			}
+			download(output, name.split(".")[0] + '.json', 'application/json');*/
+		} else
+		event.preventDefault();
 	});
 });
 

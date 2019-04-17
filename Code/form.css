@@ -23,18 +23,35 @@ html {
 
 #section2 {
   margin-left: 40px;
+  font-family: : Segoe UI;
 }
 
 #section3 {
   margin-left: 40px;
   font-size: 20px;
+  font-family: : Segoe UI;
 }
 
 #json{
-  font-size: 14px;
+  font-size: 16px;
   font-family: Segoe UI;
   display: block;
   width: 50em;
+}
+
+table{
+  table-layout: fixed;
+  width: 100%;
+  font-family: Segoe UI;
+
+}
+
+#explane{
+  font-size: 15px;
+  font-family: Segoe UI;
+  display: block;
+  width: 30em;
+  color: brown;
 }
 
 .submit {
@@ -47,6 +64,11 @@ html {
   display: block;
   width: 10em;
   font-size: 30px;
+}
+
+img {
+  height: 20px;
+  width: 20px;
 }
 
 #subsubclass{
@@ -65,7 +87,7 @@ body {
 
 #objName{
   text-align: left;
-  font-family: Times New Roman;
+  font-family: Segoe UI;
   font-size: 25px;
   float: left;
   width: 100%;
@@ -94,59 +116,61 @@ body {
 canvas {
   position: absolute;
   display: inline-block;
-  width: 49%;
+  width: 53.15%;
   height: 100%;
   float: right;
 }
 
 #myform {
-    margin:0;
-    width:100%;
-    float: left;
-    position:relative;
-    padding-top: 5px;
-    overflow-y:scroll;
-    height:1020px;
+  margin:0;
+  width:100%;
+  float: left;
+  position:relative;
+  padding-top: 5px;
+  overflow-y:scroll;
+  height:1022px;
 }
 
 label {
-    width: 8em;
-    float: left;
-    margin-right: 0.5em;
-    display: block;
-    vertical-align: middle;
-    font-size: 35px;
+  width: 8em;
+  float: left;
+  margin-right: 0.5em;
+  display: block;
+  vertical-align: middle;
+  font-size: 35px;
 }
 
 label2 {
-    width: 10em;
-    float: left;
-    margin-right: 0.8em;
-    display: block;
-    vertical-align: middle;
-    font-size: 15px;
+  width: 10em;
+  float: left;
+  margin-right: 0.8em;
+  display: block;
+  vertical-align: middle;
+  font-size: 15px;
 }
 #btn {
-    float:center;
-    margin-left: 10px;
+  float:center;
+  margin-left: 10px;
 }
 
 fieldset {
-    background:#EBF4FB none repeat scroll 0 0;
-    border:2px solid #B7DDF2;
-    width: 755px;
+  background:#EBF4FB none repeat scroll 0 0;
+  border:2px solid #B7DDF2;
+  width: 1000px;
 }
 
 legend {
-    color: #fff;
-    background: #80D3E2;
-    border: 1px solid #781351;
-    padding: 2px 6px;
+  color: #fff;
+  background: #80D3E2;
+  border: 1px solid #781351;
+  padding: 2px 6px;
 }
 .elements {
-    width: 100%;
-    padding:10px;
-    position: relative;
+  width: 100%;
+  padding:10px;
+  position: relative;
+  font-family: Segoe UI;
+
 }
 
 .labels0 {
@@ -171,22 +195,22 @@ legend {
 .comments{
   width: 100%;
   padding:10px;
-  overflow-y: scroll;
+  font-family: Segoe UI;
 }
 
 .fileName {
-    border-bottom:1px;
-    solid #B7DDF2;
-    color:#666666;
-    font-size:12px;
-    margin-bottom:20px;
-    padding-bottom:10px;
-    display: inline-block;
+  border-bottom:1px;
+  solid #B7DDF2;
+  color:#666666;
+  font-size:12px;
+  margin-bottom:20px;
+  padding-bottom:10px;
+  display: inline-block;
 }
 span {
-    color:#666666;
-    font-size:12px;
-    margin-bottom:1px;
+  color:#666666;
+  font-size:12px;
+  margin-bottom:1px;
 
 }
 .btn{
