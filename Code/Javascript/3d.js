@@ -625,7 +625,7 @@ $(document).ready(function() {
 						alert("You submitted all the files!");
 					else {
 						var sice = [];
-						for (int i = 0; i < files.length; i++) {
+						for (var i = 0; i < files.length; i++) {
 							if (!countedFiles.includes(files[i].name))
 								sice.push(i);
 						}
