@@ -123,7 +123,7 @@ document.getElementById('left2').onclick = document.getElementById('left').oncli
 		}
 		name = files[l2].name;
 		file = files[l2];
-		document.getElementById("counter").innerHTML = "Count: " + l2 + "/" + files.length;
+		document.getElementById("counter").innerHTML = "Count: " + (l2+1) + "/" + files.length;
 		fileUpload(file);
 		nameUpdate(name);
 		if(newUser)
@@ -158,7 +158,7 @@ document.getElementById('left3').onclick = document.getElementById('left').oncli
 		file = files[l2];
 		fileUpload(file);
 		nameUpdate(name);
-		document.getElementById("counter").innerHTML = "Count: " + l2 + "/" + files.length;
+		document.getElementById("counter").innerHTML = "Count: " + (l2+1) + "/" + files.length;
 		if(newUser)
 			document.getElementById("user").value = user;
 		else
@@ -225,7 +225,7 @@ document.getElementById('left').onclick = function(){
 		}
 		name = files[l2].name;
 		file = files[l2];
-		document.getElementById("counter").innerHTML = "Count: " + l2 + "/" + files.length;
+		document.getElementById("counter").innerHTML = "Count: " + (l2+1) + "/" + files.length;
 		fileUpload(file);
 		nameUpdate(name);
 		if(newUser)
