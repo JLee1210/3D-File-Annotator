@@ -174,6 +174,7 @@ document.getElementById('right').onclick = function(){
 		scene.add(backLight);
 		name = files[r].name;
 		file = files[r];
+		document.getElementById("counter").innerHTML = "Count: " + r + "/" + files.length;
 		c = r;
 		fileUpload(file);
 		nameUpdate(name);
@@ -220,6 +221,7 @@ document.getElementById('left').onclick = function(){
 		}
 		name = files[l2].name;
 		file = files[l2];
+		document.getElementById("counter").innerHTML = "Count: " + l2 + "/" + files.length;
 		fileUpload(file);
 		nameUpdate(name);
 		if(newUser)
@@ -515,7 +517,7 @@ function validateForm() {
 	return true;
 }
 
-var countedFiles = [];
+//var countedFiles = [];
 
 $('input:checkbox, textarea').keydown(function (e) {
 	if (e.which == 13) {
@@ -607,18 +609,18 @@ $(document).ready(function() {
 					var arr = data.split("\n");
 					jsons.push(new File(arr, files[c].name.split(".")[0] + ".json", {type: "application/json"}));
 					alert("Saved in Code/json!");
-					if (!countedFiles.includes(files[c].name)) {
+					/*if (!countedFiles.includes(files[c].name)) {
 						countedFiles.push(files[c].name);
 						document.getElementById("counter").innerHTML = "Count: " + 
 						countedFiles.length + "/" + files.length;
-					}
+					}*/
 					if(newUser)
 						user = document.getElementById("user").value;
 					document.getElementById("right").click();
-					if (countedFiles.length != files.length)
+					/*if (countedFiles.length != files.length)
 						document.getElementById("right").click();
 					else
-						alert("That was the last file!")
+						alert("That was the last file!")*/
 				}
 			});
 			/*function download(content, fileName, contentType) {
