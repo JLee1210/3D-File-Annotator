@@ -48,6 +48,7 @@ document.getElementById('right2').onclick = function(){
 		c = r;
 		fileUpload(file);
 		nameUpdate(name);
+		document.getElementById("counter").innerHTML = "Count: " + r + "/" + files.length;
 		if(newUser)
 			document.getElementById("user").value = user;
 		else
@@ -80,6 +81,7 @@ document.getElementById('right3').onclick = function(){
 		c = r;
 		fileUpload(file);
 		nameUpdate(name);
+		document.getElementById("counter").innerHTML = "Count: " + r + "/" + files.length;
 		if(newUser)
 			document.getElementById("user").value = user;
 		else
@@ -121,6 +123,7 @@ document.getElementById('left2').onclick = document.getElementById('left').oncli
 		}
 		name = files[l2].name;
 		file = files[l2];
+		document.getElementById("counter").innerHTML = "Count: " + l2 + "/" + files.length;
 		fileUpload(file);
 		nameUpdate(name);
 		if(newUser)
@@ -155,6 +158,7 @@ document.getElementById('left3').onclick = document.getElementById('left').oncli
 		file = files[l2];
 		fileUpload(file);
 		nameUpdate(name);
+		document.getElementById("counter").innerHTML = "Count: " + l2 + "/" + files.length;
 		if(newUser)
 			document.getElementById("user").value = user;
 		else
@@ -609,18 +613,24 @@ $(document).ready(function() {
 					var arr = data.split("\n");
 					jsons.push(new File(arr, files[c].name.split(".")[0] + ".json", {type: "application/json"}));
 					alert("Saved in Code/json!");
-					/*if (!countedFiles.includes(files[c].name)) {
+					if (!countedFiles.includes(files[c].name)) {
 						countedFiles.push(files[c].name);
-						document.getElementById("counter").innerHTML = "Count: " + 
-						countedFiles.length + "/" + files.length;
-					}*/
+					}
 					if(newUser)
 						user = document.getElementById("user").value;
-					document.getElementById("right").click();
-					/*if (countedFiles.length != files.length)
+					//document.getElementById("right").click();
+					if (r != files.length)
 						document.getElementById("right").click();
-					else
-						alert("That was the last file!")*/
+					else if (countedFiles.length == files.length)
+						alert("You submitted all the files!");
+					else {
+						var sice = [];
+						for (int i = 0; i < files.length; i++) {
+							if (!countedFiles.includes(files[i].name))
+								sice.push(i);
+						}
+						alert("You submitted all files except: " + sice.toString());
+					}
 				}
 			});
 			/*function download(content, fileName, contentType) {
